@@ -1,0 +1,2243 @@
+{
+  "meta": {
+    "total_samples": 328,
+    "valid_samples": 328,
+    "survey_period": "2026.09.01 - 2026.09.10",
+    "data_source": "问卷星 + 校园社群 + 小红书"
+  },
+  "basic_info": {
+    "grade": [
+      {
+        "name": "大三",
+        "count": 88,
+        "percent": 26.8
+      },
+      {
+        "name": "大二",
+        "count": 76,
+        "percent": 23.2
+      },
+      {
+        "name": "大一",
+        "count": 61,
+        "percent": 18.6
+      },
+      {
+        "name": "大四",
+        "count": 50,
+        "percent": 15.2
+      },
+      {
+        "name": "研一",
+        "count": 29,
+        "percent": 8.8
+      },
+      {
+        "name": "研二及以上",
+        "count": 24,
+        "percent": 7.3
+      }
+    ],
+    "major": [
+      {
+        "name": "经管类",
+        "count": 77,
+        "percent": 23.5
+      },
+      {
+        "name": "理工类",
+        "count": 68,
+        "percent": 20.7
+      },
+      {
+        "name": "文史哲类",
+        "count": 53,
+        "percent": 16.2
+      },
+      {
+        "name": "旅游/酒店管理类",
+        "count": 44,
+        "percent": 13.4
+      },
+      {
+        "name": "艺术类",
+        "count": 37,
+        "percent": 11.3
+      },
+      {
+        "name": "医学类",
+        "count": 21,
+        "percent": 6.4
+      },
+      {
+        "name": "教育类",
+        "count": 16,
+        "percent": 4.9
+      },
+      {
+        "name": "其他",
+        "count": 12,
+        "percent": 3.7
+      }
+    ],
+    "living_cost": [
+      {
+        "name": "1501-2000元",
+        "count": 100,
+        "percent": 30.5
+      },
+      {
+        "name": "1000-1500元",
+        "count": 78,
+        "percent": 23.8
+      },
+      {
+        "name": "2001-2500元",
+        "count": 63,
+        "percent": 19.2
+      },
+      {
+        "name": "2501-3000元",
+        "count": 37,
+        "percent": 11.3
+      },
+      {
+        "name": "3000元以上",
+        "count": 29,
+        "percent": 8.8
+      },
+      {
+        "name": "1000元以下",
+        "count": 21,
+        "percent": 6.4
+      }
+    ]
+  },
+  "travel_behavior": {
+    "trip_frequency": [
+      {
+        "name": "3-4次",
+        "count": 111,
+        "percent": 33.8
+      },
+      {
+        "name": "1-2次",
+        "count": 97,
+        "percent": 29.6
+      },
+      {
+        "name": "5-6次",
+        "count": 68,
+        "percent": 20.7
+      },
+      {
+        "name": "7次及以上",
+        "count": 40,
+        "percent": 12.2
+      },
+      {
+        "name": "0次",
+        "count": 12,
+        "percent": 3.7
+      }
+    ],
+    "destination_type": [
+      {
+        "name": "城市人文",
+        "count": 130,
+        "percent": 41.1
+      },
+      {
+        "name": "自然风景",
+        "count": 120,
+        "percent": 38.0
+      },
+      {
+        "name": "美食探店",
+        "count": 90,
+        "percent": 28.5
+      },
+      {
+        "name": "周边乡村/古镇",
+        "count": 63,
+        "percent": 19.9
+      },
+      {
+        "name": "网红打卡点",
+        "count": 56,
+        "percent": 17.7
+      },
+      {
+        "name": "主题乐园",
+        "count": 55,
+        "percent": 17.4
+      },
+      {
+        "name": "高校校园参观",
+        "count": 29,
+        "percent": 9.2
+      },
+      {
+        "name": "其他",
+        "count": 18,
+        "percent": 5.7
+      }
+    ],
+    "companion": [
+      {
+        "name": "室友/同学(2-3人)",
+        "count": 127,
+        "percent": 40.2
+      },
+      {
+        "name": "朋友小团体(4人以上)",
+        "count": 72,
+        "percent": 22.8
+      },
+      {
+        "name": "男/女朋友",
+        "count": 50,
+        "percent": 15.8
+      },
+      {
+        "name": "家人",
+        "count": 35,
+        "percent": 11.1
+      },
+      {
+        "name": "独自一人",
+        "count": 32,
+        "percent": 10.1
+      }
+    ],
+    "budget": [
+      {
+        "name": "401-600元",
+        "count": 93,
+        "percent": 29.4
+      },
+      {
+        "name": "201-400元",
+        "count": 63,
+        "percent": 19.9
+      },
+      {
+        "name": "601-800元",
+        "count": 59,
+        "percent": 18.7
+      },
+      {
+        "name": "801-1000元",
+        "count": 40,
+        "percent": 12.7
+      },
+      {
+        "name": "200元以下",
+        "count": 33,
+        "percent": 10.4
+      },
+      {
+        "name": "1000元以上",
+        "count": 28,
+        "percent": 8.9
+      }
+    ],
+    "budget_part": [
+      {
+        "name": "交通",
+        "count": 91,
+        "percent": 28.8
+      },
+      {
+        "name": "餐饮",
+        "count": 80,
+        "percent": 25.3
+      },
+      {
+        "name": "住宿",
+        "count": 61,
+        "percent": 19.3
+      },
+      {
+        "name": "门票/体验项目",
+        "count": 56,
+        "percent": 17.7
+      },
+      {
+        "name": "购物/伴手礼",
+        "count": 28,
+        "percent": 8.9
+      }
+    ],
+    "plan_ahead": [
+      {
+        "name": "提前1-2天",
+        "count": 96,
+        "percent": 30.4
+      },
+      {
+        "name": "提前3-7天",
+        "count": 92,
+        "percent": 29.1
+      },
+      {
+        "name": "提前1-2周",
+        "count": 59,
+        "percent": 18.7
+      },
+      {
+        "name": "提前2周以上",
+        "count": 38,
+        "percent": 12.0
+      },
+      {
+        "name": "说走就走",
+        "count": 31,
+        "percent": 9.8
+      }
+    ],
+    "info_channel": [
+      {
+        "name": "小红书",
+        "count": 146,
+        "percent": 46.2
+      },
+      {
+        "name": "抖音",
+        "count": 114,
+        "percent": 36.1
+      },
+      {
+        "name": "大众点评",
+        "count": 63,
+        "percent": 19.9
+      },
+      {
+        "name": "朋友推荐",
+        "count": 55,
+        "percent": 17.4
+      },
+      {
+        "name": "OTA平台(携程/马蜂窝)",
+        "count": 49,
+        "percent": 15.5
+      },
+      {
+        "name": "B站",
+        "count": 46,
+        "percent": 14.6
+      },
+      {
+        "name": "微博",
+        "count": 38,
+        "percent": 12.0
+      },
+      {
+        "name": "知乎",
+        "count": 26,
+        "percent": 8.2
+      },
+      {
+        "name": "其他",
+        "count": 19,
+        "percent": 6.0
+      }
+    ]
+  },
+  "pain_points": {
+    "pain_multi": [
+      {
+        "name": "攻略信息太分散，多APP切换",
+        "count": 156,
+        "percent": 47.6
+      },
+      {
+        "name": "攻略质量参差不齐，广告多",
+        "count": 150,
+        "percent": 45.7
+      },
+      {
+        "name": "缺少学生视角的预算参考",
+        "count": 143,
+        "percent": 43.6
+      },
+      {
+        "name": "没有现成行程模板",
+        "count": 134,
+        "percent": 40.9
+      },
+      {
+        "name": "交通接驳信息不清晰",
+        "count": 110,
+        "percent": 33.5
+      },
+      {
+        "name": "小众目的地信息太少",
+        "count": 109,
+        "percent": 33.2
+      },
+      {
+        "name": "住宿选择困难",
+        "count": 77,
+        "percent": 23.5
+      },
+      {
+        "name": "美食探店容易踩雷",
+        "count": 71,
+        "percent": 21.6
+      },
+      {
+        "name": "一人出行难拼车/找搭子",
+        "count": 48,
+        "percent": 14.6
+      },
+      {
+        "name": "其他",
+        "count": 13,
+        "percent": 4.0
+      }
+    ],
+    "worst_pain": [
+      {
+        "name": "没有现成行程模板",
+        "count": 61,
+        "percent": 18.6
+      },
+      {
+        "name": "缺少学生视角的预算参考",
+        "count": 59,
+        "percent": 18.0
+      },
+      {
+        "name": "攻略质量参差不齐，广告多",
+        "count": 53,
+        "percent": 16.2
+      },
+      {
+        "name": "攻略信息太分散，多APP切换",
+        "count": 48,
+        "percent": 14.6
+      },
+      {
+        "name": "交通接驳信息不清晰",
+        "count": 36,
+        "percent": 11.0
+      },
+      {
+        "name": "小众目的地信息太少",
+        "count": 28,
+        "percent": 8.5
+      },
+      {
+        "name": "美食探店容易踩雷",
+        "count": 18,
+        "percent": 5.5
+      },
+      {
+        "name": "住宿选择困难",
+        "count": 17,
+        "percent": 5.2
+      },
+      {
+        "name": "其他",
+        "count": 5,
+        "percent": 1.5
+      },
+      {
+        "name": "一人出行难拼车/找搭子",
+        "count": 3,
+        "percent": 0.9
+      }
+    ],
+    "plan_tool_use": [
+      {
+        "name": "听说过但没用过",
+        "count": 103,
+        "percent": 31.4
+      },
+      {
+        "name": "完全没听说过",
+        "count": 96,
+        "percent": 29.3
+      },
+      {
+        "name": "偶尔使用",
+        "count": 93,
+        "percent": 28.4
+      },
+      {
+        "name": "经常使用",
+        "count": 36,
+        "percent": 11.0
+      }
+    ],
+    "tool_complaints": [
+      {
+        "name": "操作太复杂",
+        "count": 47,
+        "percent": 36.4
+      },
+      {
+        "name": "不能按预算调整",
+        "count": 46,
+        "percent": 35.7
+      },
+      {
+        "name": "行程模板太少",
+        "count": 41,
+        "percent": 31.8
+      },
+      {
+        "name": "推荐太商业化",
+        "count": 35,
+        "percent": 27.1
+      },
+      {
+        "name": "不能协同编辑",
+        "count": 25,
+        "percent": 19.4
+      },
+      {
+        "name": "交通时间不准",
+        "count": 23,
+        "percent": 17.8
+      },
+      {
+        "name": "其他",
+        "count": 16,
+        "percent": 12.4
+      }
+    ]
+  },
+  "demands": {
+    "functions": [
+      {
+        "name": "按预算推荐目的地和行程",
+        "count": 161,
+        "percent": 49.1
+      },
+      {
+        "name": "现成学生党行程模板",
+        "count": 152,
+        "percent": 46.3
+      },
+      {
+        "name": "小众目的地种草",
+        "count": 142,
+        "percent": 43.3
+      },
+      {
+        "name": "交通接驳指南",
+        "count": 108,
+        "percent": 32.9
+      },
+      {
+        "name": "当地美食红黑榜",
+        "count": 100,
+        "percent": 30.5
+      },
+      {
+        "name": "实时避坑提醒",
+        "count": 79,
+        "percent": 24.1
+      },
+      {
+        "name": "住宿区域推荐",
+        "count": 67,
+        "percent": 20.4
+      },
+      {
+        "name": "出行搭子匹配",
+        "count": 59,
+        "percent": 18.0
+      },
+      {
+        "name": "行程共享与协同编辑",
+        "count": 48,
+        "percent": 14.6
+      },
+      {
+        "name": "旅行记账与AA分摊",
+        "count": 36,
+        "percent": 11.0
+      },
+      {
+        "name": "其他",
+        "count": 13,
+        "percent": 4.0
+      }
+    ],
+    "pay_willing": [
+      {
+        "name": "都不愿意付费",
+        "count": 183,
+        "percent": 55.8
+      },
+      {
+        "name": "独家小众目的地攻略",
+        "count": 55,
+        "percent": 16.8
+      },
+      {
+        "name": "AI高级行程定制",
+        "count": 41,
+        "percent": 12.5
+      },
+      {
+        "name": "无广告纯净体验",
+        "count": 36,
+        "percent": 11.0
+      },
+      {
+        "name": "其他",
+        "count": 13,
+        "percent": 4.0
+      }
+    ],
+    "product_form": [
+      {
+        "name": "微信小程序",
+        "count": 161,
+        "percent": 49.1
+      },
+      {
+        "name": "小红书/抖音账号+社群",
+        "count": 68,
+        "percent": 20.7
+      },
+      {
+        "name": "独立APP",
+        "count": 36,
+        "percent": 11.0
+      },
+      {
+        "name": "都可以",
+        "count": 35,
+        "percent": 10.7
+      },
+      {
+        "name": "网页版",
+        "count": 28,
+        "percent": 8.5
+      }
+    ],
+    "content_style": [
+      {
+        "name": "真实接地气(学长学姐经验)",
+        "count": 96,
+        "percent": 29.3
+      },
+      {
+        "name": "简洁高效(直接给结论)",
+        "count": 92,
+        "percent": 28.0
+      },
+      {
+        "name": "图文精美",
+        "count": 64,
+        "percent": 19.5
+      },
+      {
+        "name": "有趣好玩有梗",
+        "count": 42,
+        "percent": 12.8
+      },
+      {
+        "name": "专业严谨数据详实",
+        "count": 34,
+        "percent": 10.4
+      }
+    ]
+  },
+  "cross_analysis": {
+    "grade_x_frequency": {
+      "大三": {
+        "total": 88,
+        "distribution": [
+          {
+            "name": "1-2次",
+            "count": 33,
+            "percent": 37.5
+          },
+          {
+            "name": "3-4次",
+            "count": 29,
+            "percent": 33.0
+          },
+          {
+            "name": "5-6次",
+            "count": 13,
+            "percent": 14.8
+          },
+          {
+            "name": "7次及以上",
+            "count": 8,
+            "percent": 9.1
+          },
+          {
+            "name": "0次",
+            "count": 5,
+            "percent": 5.7
+          }
+        ]
+      },
+      "大二": {
+        "total": 76,
+        "distribution": [
+          {
+            "name": "3-4次",
+            "count": 28,
+            "percent": 36.8
+          },
+          {
+            "name": "5-6次",
+            "count": 21,
+            "percent": 27.6
+          },
+          {
+            "name": "1-2次",
+            "count": 20,
+            "percent": 26.3
+          },
+          {
+            "name": "7次及以上",
+            "count": 6,
+            "percent": 7.9
+          },
+          {
+            "name": "0次",
+            "count": 1,
+            "percent": 1.3
+          }
+        ]
+      },
+      "大四": {
+        "total": 50,
+        "distribution": [
+          {
+            "name": "3-4次",
+            "count": 21,
+            "percent": 42.0
+          },
+          {
+            "name": "5-6次",
+            "count": 11,
+            "percent": 22.0
+          },
+          {
+            "name": "1-2次",
+            "count": 10,
+            "percent": 20.0
+          },
+          {
+            "name": "7次及以上",
+            "count": 6,
+            "percent": 12.0
+          },
+          {
+            "name": "0次",
+            "count": 2,
+            "percent": 4.0
+          }
+        ]
+      },
+      "大一": {
+        "total": 61,
+        "distribution": [
+          {
+            "name": "1-2次",
+            "count": 21,
+            "percent": 34.4
+          },
+          {
+            "name": "3-4次",
+            "count": 15,
+            "percent": 24.6
+          },
+          {
+            "name": "5-6次",
+            "count": 14,
+            "percent": 23.0
+          },
+          {
+            "name": "7次及以上",
+            "count": 9,
+            "percent": 14.8
+          },
+          {
+            "name": "0次",
+            "count": 2,
+            "percent": 3.3
+          }
+        ]
+      },
+      "研二及以上": {
+        "total": 24,
+        "distribution": [
+          {
+            "name": "1-2次",
+            "count": 7,
+            "percent": 29.2
+          },
+          {
+            "name": "7次及以上",
+            "count": 6,
+            "percent": 25.0
+          },
+          {
+            "name": "5-6次",
+            "count": 5,
+            "percent": 20.8
+          },
+          {
+            "name": "3-4次",
+            "count": 5,
+            "percent": 20.8
+          },
+          {
+            "name": "0次",
+            "count": 1,
+            "percent": 4.2
+          }
+        ]
+      },
+      "研一": {
+        "total": 29,
+        "distribution": [
+          {
+            "name": "3-4次",
+            "count": 13,
+            "percent": 44.8
+          },
+          {
+            "name": "1-2次",
+            "count": 6,
+            "percent": 20.7
+          },
+          {
+            "name": "7次及以上",
+            "count": 5,
+            "percent": 17.2
+          },
+          {
+            "name": "5-6次",
+            "count": 4,
+            "percent": 13.8
+          },
+          {
+            "name": "0次",
+            "count": 1,
+            "percent": 3.4
+          }
+        ]
+      }
+    },
+    "livingcost_x_budget": {
+      "1000-1500元": {
+        "total": 75,
+        "distribution": [
+          {
+            "name": "201-400元",
+            "count": 27,
+            "percent": 36.0
+          },
+          {
+            "name": "401-600元",
+            "count": 21,
+            "percent": 28.0
+          },
+          {
+            "name": "200元以下",
+            "count": 14,
+            "percent": 18.7
+          },
+          {
+            "name": "601-800元",
+            "count": 10,
+            "percent": 13.3
+          },
+          {
+            "name": "801-1000元",
+            "count": 2,
+            "percent": 2.7
+          },
+          {
+            "name": "1000元以上",
+            "count": 1,
+            "percent": 1.3
+          }
+        ]
+      },
+      "2501-3000元": {
+        "total": 37,
+        "distribution": [
+          {
+            "name": "401-600元",
+            "count": 11,
+            "percent": 29.7
+          },
+          {
+            "name": "801-1000元",
+            "count": 9,
+            "percent": 24.3
+          },
+          {
+            "name": "1000元以上",
+            "count": 8,
+            "percent": 21.6
+          },
+          {
+            "name": "201-400元",
+            "count": 5,
+            "percent": 13.5
+          },
+          {
+            "name": "601-800元",
+            "count": 2,
+            "percent": 5.4
+          },
+          {
+            "name": "200元以下",
+            "count": 2,
+            "percent": 5.4
+          }
+        ]
+      },
+      "1000元以下": {
+        "total": 21,
+        "distribution": [
+          {
+            "name": "401-600元",
+            "count": 7,
+            "percent": 33.3
+          },
+          {
+            "name": "201-400元",
+            "count": 6,
+            "percent": 28.6
+          },
+          {
+            "name": "200元以下",
+            "count": 4,
+            "percent": 19.0
+          },
+          {
+            "name": "601-800元",
+            "count": 3,
+            "percent": 14.3
+          },
+          {
+            "name": "801-1000元",
+            "count": 1,
+            "percent": 4.8
+          }
+        ]
+      },
+      "2001-2500元": {
+        "total": 61,
+        "distribution": [
+          {
+            "name": "401-600元",
+            "count": 25,
+            "percent": 41.0
+          },
+          {
+            "name": "201-400元",
+            "count": 10,
+            "percent": 16.4
+          },
+          {
+            "name": "601-800元",
+            "count": 9,
+            "percent": 14.8
+          },
+          {
+            "name": "1000元以上",
+            "count": 7,
+            "percent": 11.5
+          },
+          {
+            "name": "801-1000元",
+            "count": 6,
+            "percent": 9.8
+          },
+          {
+            "name": "200元以下",
+            "count": 4,
+            "percent": 6.6
+          }
+        ]
+      },
+      "1501-2000元": {
+        "total": 94,
+        "distribution": [
+          {
+            "name": "401-600元",
+            "count": 27,
+            "percent": 28.7
+          },
+          {
+            "name": "601-800元",
+            "count": 23,
+            "percent": 24.5
+          },
+          {
+            "name": "801-1000元",
+            "count": 14,
+            "percent": 14.9
+          },
+          {
+            "name": "201-400元",
+            "count": 13,
+            "percent": 13.8
+          },
+          {
+            "name": "200元以下",
+            "count": 9,
+            "percent": 9.6
+          },
+          {
+            "name": "1000元以上",
+            "count": 8,
+            "percent": 8.5
+          }
+        ]
+      },
+      "3000元以上": {
+        "total": 28,
+        "distribution": [
+          {
+            "name": "601-800元",
+            "count": 12,
+            "percent": 42.9
+          },
+          {
+            "name": "801-1000元",
+            "count": 8,
+            "percent": 28.6
+          },
+          {
+            "name": "1000元以上",
+            "count": 4,
+            "percent": 14.3
+          },
+          {
+            "name": "401-600元",
+            "count": 2,
+            "percent": 7.1
+          },
+          {
+            "name": "201-400元",
+            "count": 2,
+            "percent": 7.1
+          }
+        ]
+      }
+    },
+    "livingcost_x_pay": {
+      "1000-1500元": {
+        "total": 78,
+        "distribution": [
+          {
+            "name": "都不愿意付费",
+            "count": 39,
+            "percent": 50.0
+          },
+          {
+            "name": "独家小众目的地攻略",
+            "count": 20,
+            "percent": 25.6
+          },
+          {
+            "name": "AI高级行程定制",
+            "count": 10,
+            "percent": 12.8
+          },
+          {
+            "name": "无广告纯净体验",
+            "count": 5,
+            "percent": 6.4
+          },
+          {
+            "name": "其他",
+            "count": 4,
+            "percent": 5.1
+          }
+        ]
+      },
+      "2501-3000元": {
+        "total": 37,
+        "distribution": [
+          {
+            "name": "都不愿意付费",
+            "count": 18,
+            "percent": 48.6
+          },
+          {
+            "name": "独家小众目的地攻略",
+            "count": 8,
+            "percent": 21.6
+          },
+          {
+            "name": "无广告纯净体验",
+            "count": 6,
+            "percent": 16.2
+          },
+          {
+            "name": "AI高级行程定制",
+            "count": 5,
+            "percent": 13.5
+          }
+        ]
+      },
+      "1000元以下": {
+        "total": 21,
+        "distribution": [
+          {
+            "name": "都不愿意付费",
+            "count": 11,
+            "percent": 52.4
+          },
+          {
+            "name": "无广告纯净体验",
+            "count": 5,
+            "percent": 23.8
+          },
+          {
+            "name": "独家小众目的地攻略",
+            "count": 2,
+            "percent": 9.5
+          },
+          {
+            "name": "AI高级行程定制",
+            "count": 2,
+            "percent": 9.5
+          },
+          {
+            "name": "其他",
+            "count": 1,
+            "percent": 4.8
+          }
+        ]
+      },
+      "2001-2500元": {
+        "total": 63,
+        "distribution": [
+          {
+            "name": "都不愿意付费",
+            "count": 42,
+            "percent": 66.7
+          },
+          {
+            "name": "独家小众目的地攻略",
+            "count": 8,
+            "percent": 12.7
+          },
+          {
+            "name": "AI高级行程定制",
+            "count": 5,
+            "percent": 7.9
+          },
+          {
+            "name": "无广告纯净体验",
+            "count": 5,
+            "percent": 7.9
+          },
+          {
+            "name": "其他",
+            "count": 3,
+            "percent": 4.8
+          }
+        ]
+      },
+      "1501-2000元": {
+        "total": 100,
+        "distribution": [
+          {
+            "name": "都不愿意付费",
+            "count": 63,
+            "percent": 63.0
+          },
+          {
+            "name": "AI高级行程定制",
+            "count": 13,
+            "percent": 13.0
+          },
+          {
+            "name": "独家小众目的地攻略",
+            "count": 12,
+            "percent": 12.0
+          },
+          {
+            "name": "无广告纯净体验",
+            "count": 7,
+            "percent": 7.0
+          },
+          {
+            "name": "其他",
+            "count": 5,
+            "percent": 5.0
+          }
+        ]
+      },
+      "3000元以上": {
+        "total": 29,
+        "distribution": [
+          {
+            "name": "都不愿意付费",
+            "count": 10,
+            "percent": 34.5
+          },
+          {
+            "name": "无广告纯净体验",
+            "count": 8,
+            "percent": 27.6
+          },
+          {
+            "name": "AI高级行程定制",
+            "count": 6,
+            "percent": 20.7
+          },
+          {
+            "name": "独家小众目的地攻略",
+            "count": 5,
+            "percent": 17.2
+          }
+        ]
+      }
+    },
+    "frequency_x_functions": {
+      "1-2次": {
+        "total": 97,
+        "distribution": [
+          {
+            "name": "按预算推荐目的地和行程",
+            "count": 54,
+            "percent": 55.7
+          },
+          {
+            "name": "现成学生党行程模板",
+            "count": 41,
+            "percent": 42.3
+          },
+          {
+            "name": "小众目的地种草",
+            "count": 40,
+            "percent": 41.2
+          },
+          {
+            "name": "交通接驳指南",
+            "count": 34,
+            "percent": 35.1
+          },
+          {
+            "name": "当地美食红黑榜",
+            "count": 31,
+            "percent": 32.0
+          },
+          {
+            "name": "住宿区域推荐",
+            "count": 24,
+            "percent": 24.7
+          },
+          {
+            "name": "实时避坑提醒",
+            "count": 23,
+            "percent": 23.7
+          },
+          {
+            "name": "出行搭子匹配",
+            "count": 12,
+            "percent": 12.4
+          },
+          {
+            "name": "旅行记账与AA分摊",
+            "count": 10,
+            "percent": 10.3
+          },
+          {
+            "name": "行程共享与协同编辑",
+            "count": 8,
+            "percent": 8.2
+          },
+          {
+            "name": "其他",
+            "count": 3,
+            "percent": 3.1
+          }
+        ]
+      },
+      "3-4次": {
+        "total": 111,
+        "distribution": [
+          {
+            "name": "按预算推荐目的地和行程",
+            "count": 56,
+            "percent": 50.5
+          },
+          {
+            "name": "小众目的地种草",
+            "count": 49,
+            "percent": 44.1
+          },
+          {
+            "name": "现成学生党行程模板",
+            "count": 48,
+            "percent": 43.2
+          },
+          {
+            "name": "当地美食红黑榜",
+            "count": 36,
+            "percent": 32.4
+          },
+          {
+            "name": "交通接驳指南",
+            "count": 36,
+            "percent": 32.4
+          },
+          {
+            "name": "住宿区域推荐",
+            "count": 24,
+            "percent": 21.6
+          },
+          {
+            "name": "实时避坑提醒",
+            "count": 24,
+            "percent": 21.6
+          },
+          {
+            "name": "出行搭子匹配",
+            "count": 21,
+            "percent": 18.9
+          },
+          {
+            "name": "行程共享与协同编辑",
+            "count": 17,
+            "percent": 15.3
+          },
+          {
+            "name": "旅行记账与AA分摊",
+            "count": 14,
+            "percent": 12.6
+          },
+          {
+            "name": "其他",
+            "count": 6,
+            "percent": 5.4
+          }
+        ]
+      },
+      "7次及以上": {
+        "total": 40,
+        "distribution": [
+          {
+            "name": "按预算推荐目的地和行程",
+            "count": 21,
+            "percent": 52.5
+          },
+          {
+            "name": "现成学生党行程模板",
+            "count": 21,
+            "percent": 52.5
+          },
+          {
+            "name": "小众目的地种草",
+            "count": 21,
+            "percent": 52.5
+          },
+          {
+            "name": "交通接驳指南",
+            "count": 13,
+            "percent": 32.5
+          },
+          {
+            "name": "当地美食红黑榜",
+            "count": 11,
+            "percent": 27.5
+          },
+          {
+            "name": "行程共享与协同编辑",
+            "count": 10,
+            "percent": 25.0
+          },
+          {
+            "name": "出行搭子匹配",
+            "count": 9,
+            "percent": 22.5
+          },
+          {
+            "name": "旅行记账与AA分摊",
+            "count": 6,
+            "percent": 15.0
+          },
+          {
+            "name": "实时避坑提醒",
+            "count": 5,
+            "percent": 12.5
+          },
+          {
+            "name": "住宿区域推荐",
+            "count": 3,
+            "percent": 7.5
+          },
+          {
+            "name": "其他",
+            "count": 3,
+            "percent": 7.5
+          }
+        ]
+      },
+      "5-6次": {
+        "total": 68,
+        "distribution": [
+          {
+            "name": "现成学生党行程模板",
+            "count": 36,
+            "percent": 52.9
+          },
+          {
+            "name": "小众目的地种草",
+            "count": 27,
+            "percent": 39.7
+          },
+          {
+            "name": "按预算推荐目的地和行程",
+            "count": 26,
+            "percent": 38.2
+          },
+          {
+            "name": "实时避坑提醒",
+            "count": 21,
+            "percent": 30.9
+          },
+          {
+            "name": "交通接驳指南",
+            "count": 20,
+            "percent": 29.4
+          },
+          {
+            "name": "当地美食红黑榜",
+            "count": 20,
+            "percent": 29.4
+          },
+          {
+            "name": "住宿区域推荐",
+            "count": 15,
+            "percent": 22.1
+          },
+          {
+            "name": "出行搭子匹配",
+            "count": 14,
+            "percent": 20.6
+          },
+          {
+            "name": "行程共享与协同编辑",
+            "count": 11,
+            "percent": 16.2
+          },
+          {
+            "name": "旅行记账与AA分摊",
+            "count": 5,
+            "percent": 7.4
+          },
+          {
+            "name": "其他",
+            "count": 1,
+            "percent": 1.5
+          }
+        ]
+      },
+      "0次": {
+        "total": 12,
+        "distribution": [
+          {
+            "name": "现成学生党行程模板",
+            "count": 6,
+            "percent": 50.0
+          },
+          {
+            "name": "实时避坑提醒",
+            "count": 6,
+            "percent": 50.0
+          },
+          {
+            "name": "小众目的地种草",
+            "count": 5,
+            "percent": 41.7
+          },
+          {
+            "name": "交通接驳指南",
+            "count": 5,
+            "percent": 41.7
+          },
+          {
+            "name": "按预算推荐目的地和行程",
+            "count": 4,
+            "percent": 33.3
+          },
+          {
+            "name": "出行搭子匹配",
+            "count": 3,
+            "percent": 25.0
+          },
+          {
+            "name": "行程共享与协同编辑",
+            "count": 2,
+            "percent": 16.7
+          },
+          {
+            "name": "当地美食红黑榜",
+            "count": 2,
+            "percent": 16.7
+          },
+          {
+            "name": "住宿区域推荐",
+            "count": 1,
+            "percent": 8.3
+          },
+          {
+            "name": "旅行记账与AA分摊",
+            "count": 1,
+            "percent": 8.3
+          }
+        ]
+      }
+    },
+    "major_x_destination": {
+      "经管类": {
+        "total": 73,
+        "distribution": [
+          {
+            "name": "城市人文",
+            "count": 38,
+            "percent": 52.1
+          },
+          {
+            "name": "美食探店",
+            "count": 22,
+            "percent": 30.1
+          },
+          {
+            "name": "自然风景",
+            "count": 18,
+            "percent": 24.7
+          },
+          {
+            "name": "主题乐园",
+            "count": 17,
+            "percent": 23.3
+          },
+          {
+            "name": "周边乡村/古镇",
+            "count": 12,
+            "percent": 16.4
+          },
+          {
+            "name": "网红打卡点",
+            "count": 9,
+            "percent": 12.3
+          },
+          {
+            "name": "高校校园参观",
+            "count": 6,
+            "percent": 8.2
+          },
+          {
+            "name": "其他",
+            "count": 3,
+            "percent": 4.1
+          }
+        ]
+      },
+      "文史哲类": {
+        "total": 53,
+        "distribution": [
+          {
+            "name": "自然风景",
+            "count": 26,
+            "percent": 49.1
+          },
+          {
+            "name": "城市人文",
+            "count": 21,
+            "percent": 39.6
+          },
+          {
+            "name": "周边乡村/古镇",
+            "count": 11,
+            "percent": 20.8
+          },
+          {
+            "name": "美食探店",
+            "count": 10,
+            "percent": 18.9
+          },
+          {
+            "name": "网红打卡点",
+            "count": 9,
+            "percent": 17.0
+          },
+          {
+            "name": "高校校园参观",
+            "count": 9,
+            "percent": 17.0
+          },
+          {
+            "name": "主题乐园",
+            "count": 4,
+            "percent": 7.5
+          },
+          {
+            "name": "其他",
+            "count": 1,
+            "percent": 1.9
+          }
+        ]
+      },
+      "理工类": {
+        "total": 64,
+        "distribution": [
+          {
+            "name": "城市人文",
+            "count": 26,
+            "percent": 40.6
+          },
+          {
+            "name": "自然风景",
+            "count": 23,
+            "percent": 35.9
+          },
+          {
+            "name": "美食探店",
+            "count": 23,
+            "percent": 35.9
+          },
+          {
+            "name": "周边乡村/古镇",
+            "count": 17,
+            "percent": 26.6
+          },
+          {
+            "name": "主题乐园",
+            "count": 14,
+            "percent": 21.9
+          },
+          {
+            "name": "网红打卡点",
+            "count": 13,
+            "percent": 20.3
+          },
+          {
+            "name": "高校校园参观",
+            "count": 4,
+            "percent": 6.2
+          },
+          {
+            "name": "其他",
+            "count": 3,
+            "percent": 4.7
+          }
+        ]
+      },
+      "旅游/酒店管理类": {
+        "total": 44,
+        "distribution": [
+          {
+            "name": "自然风景",
+            "count": 18,
+            "percent": 40.9
+          },
+          {
+            "name": "城市人文",
+            "count": 16,
+            "percent": 36.4
+          },
+          {
+            "name": "周边乡村/古镇",
+            "count": 13,
+            "percent": 29.5
+          },
+          {
+            "name": "网红打卡点",
+            "count": 12,
+            "percent": 27.3
+          },
+          {
+            "name": "美食探店",
+            "count": 9,
+            "percent": 20.5
+          },
+          {
+            "name": "其他",
+            "count": 7,
+            "percent": 15.9
+          },
+          {
+            "name": "主题乐园",
+            "count": 4,
+            "percent": 9.1
+          },
+          {
+            "name": "高校校园参观",
+            "count": 2,
+            "percent": 4.5
+          }
+        ]
+      },
+      "艺术类": {
+        "total": 36,
+        "distribution": [
+          {
+            "name": "城市人文",
+            "count": 18,
+            "percent": 50.0
+          },
+          {
+            "name": "自然风景",
+            "count": 16,
+            "percent": 44.4
+          },
+          {
+            "name": "美食探店",
+            "count": 12,
+            "percent": 33.3
+          },
+          {
+            "name": "主题乐园",
+            "count": 7,
+            "percent": 19.4
+          },
+          {
+            "name": "周边乡村/古镇",
+            "count": 5,
+            "percent": 13.9
+          },
+          {
+            "name": "网红打卡点",
+            "count": 5,
+            "percent": 13.9
+          },
+          {
+            "name": "高校校园参观",
+            "count": 2,
+            "percent": 5.6
+          },
+          {
+            "name": "其他",
+            "count": 1,
+            "percent": 2.8
+          }
+        ]
+      },
+      "教育类": {
+        "total": 15,
+        "distribution": [
+          {
+            "name": "自然风景",
+            "count": 6,
+            "percent": 40.0
+          },
+          {
+            "name": "美食探店",
+            "count": 5,
+            "percent": 33.3
+          },
+          {
+            "name": "城市人文",
+            "count": 4,
+            "percent": 26.7
+          },
+          {
+            "name": "高校校园参观",
+            "count": 3,
+            "percent": 20.0
+          },
+          {
+            "name": "主题乐园",
+            "count": 3,
+            "percent": 20.0
+          },
+          {
+            "name": "周边乡村/古镇",
+            "count": 2,
+            "percent": 13.3
+          },
+          {
+            "name": "网红打卡点",
+            "count": 2,
+            "percent": 13.3
+          }
+        ]
+      },
+      "其他": {
+        "total": 11,
+        "distribution": [
+          {
+            "name": "自然风景",
+            "count": 4,
+            "percent": 36.4
+          },
+          {
+            "name": "主题乐园",
+            "count": 3,
+            "percent": 27.3
+          },
+          {
+            "name": "美食探店",
+            "count": 2,
+            "percent": 18.2
+          },
+          {
+            "name": "高校校园参观",
+            "count": 2,
+            "percent": 18.2
+          },
+          {
+            "name": "网红打卡点",
+            "count": 2,
+            "percent": 18.2
+          },
+          {
+            "name": "周边乡村/古镇",
+            "count": 2,
+            "percent": 18.2
+          },
+          {
+            "name": "其他",
+            "count": 1,
+            "percent": 9.1
+          },
+          {
+            "name": "城市人文",
+            "count": 1,
+            "percent": 9.1
+          }
+        ]
+      },
+      "医学类": {
+        "total": 20,
+        "distribution": [
+          {
+            "name": "自然风景",
+            "count": 9,
+            "percent": 45.0
+          },
+          {
+            "name": "美食探店",
+            "count": 7,
+            "percent": 35.0
+          },
+          {
+            "name": "城市人文",
+            "count": 6,
+            "percent": 30.0
+          },
+          {
+            "name": "网红打卡点",
+            "count": 4,
+            "percent": 20.0
+          },
+          {
+            "name": "主题乐园",
+            "count": 3,
+            "percent": 15.0
+          },
+          {
+            "name": "其他",
+            "count": 2,
+            "percent": 10.0
+          },
+          {
+            "name": "高校校园参观",
+            "count": 1,
+            "percent": 5.0
+          },
+          {
+            "name": "周边乡村/古镇",
+            "count": 1,
+            "percent": 5.0
+          }
+        ]
+      }
+    }
+  },
+  "pain_demand_matching": {
+    "没有现成行程模板": {
+      "total": 61,
+      "top_functions": [
+        {
+          "name": "按预算推荐目的地和行程",
+          "count": 33,
+          "percent": 54.1
+        },
+        {
+          "name": "小众目的地种草",
+          "count": 29,
+          "percent": 47.5
+        },
+        {
+          "name": "现成学生党行程模板",
+          "count": 29,
+          "percent": 47.5
+        },
+        {
+          "name": "当地美食红黑榜",
+          "count": 26,
+          "percent": 42.6
+        },
+        {
+          "name": "交通接驳指南",
+          "count": 20,
+          "percent": 32.8
+        }
+      ]
+    },
+    "攻略质量参差不齐，广告多": {
+      "total": 53,
+      "top_functions": [
+        {
+          "name": "现成学生党行程模板",
+          "count": 27,
+          "percent": 50.9
+        },
+        {
+          "name": "按预算推荐目的地和行程",
+          "count": 24,
+          "percent": 45.3
+        },
+        {
+          "name": "小众目的地种草",
+          "count": 19,
+          "percent": 35.8
+        },
+        {
+          "name": "交通接驳指南",
+          "count": 16,
+          "percent": 30.2
+        },
+        {
+          "name": "当地美食红黑榜",
+          "count": 15,
+          "percent": 28.3
+        }
+      ]
+    },
+    "其他": {
+      "total": 5,
+      "top_functions": [
+        {
+          "name": "按预算推荐目的地和行程",
+          "count": 3,
+          "percent": 60.0
+        },
+        {
+          "name": "交通接驳指南",
+          "count": 3,
+          "percent": 60.0
+        },
+        {
+          "name": "小众目的地种草",
+          "count": 2,
+          "percent": 40.0
+        },
+        {
+          "name": "现成学生党行程模板",
+          "count": 1,
+          "percent": 20.0
+        },
+        {
+          "name": "旅行记账与AA分摊",
+          "count": 1,
+          "percent": 20.0
+        }
+      ]
+    },
+    "缺少学生视角的预算参考": {
+      "total": 59,
+      "top_functions": [
+        {
+          "name": "小众目的地种草",
+          "count": 28,
+          "percent": 47.5
+        },
+        {
+          "name": "现成学生党行程模板",
+          "count": 27,
+          "percent": 45.8
+        },
+        {
+          "name": "按预算推荐目的地和行程",
+          "count": 24,
+          "percent": 40.7
+        },
+        {
+          "name": "交通接驳指南",
+          "count": 19,
+          "percent": 32.2
+        },
+        {
+          "name": "实时避坑提醒",
+          "count": 17,
+          "percent": 28.8
+        }
+      ]
+    },
+    "交通接驳信息不清晰": {
+      "total": 36,
+      "top_functions": [
+        {
+          "name": "按预算推荐目的地和行程",
+          "count": 16,
+          "percent": 44.4
+        },
+        {
+          "name": "小众目的地种草",
+          "count": 15,
+          "percent": 41.7
+        },
+        {
+          "name": "现成学生党行程模板",
+          "count": 14,
+          "percent": 38.9
+        },
+        {
+          "name": "当地美食红黑榜",
+          "count": 13,
+          "percent": 36.1
+        },
+        {
+          "name": "交通接驳指南",
+          "count": 13,
+          "percent": 36.1
+        }
+      ]
+    },
+    "小众目的地信息太少": {
+      "total": 28,
+      "top_functions": [
+        {
+          "name": "现成学生党行程模板",
+          "count": 14,
+          "percent": 50.0
+        },
+        {
+          "name": "按预算推荐目的地和行程",
+          "count": 13,
+          "percent": 46.4
+        },
+        {
+          "name": "小众目的地种草",
+          "count": 13,
+          "percent": 46.4
+        },
+        {
+          "name": "交通接驳指南",
+          "count": 11,
+          "percent": 39.3
+        },
+        {
+          "name": "住宿区域推荐",
+          "count": 7,
+          "percent": 25.0
+        }
+      ]
+    },
+    "美食探店容易踩雷": {
+      "total": 18,
+      "top_functions": [
+        {
+          "name": "按预算推荐目的地和行程",
+          "count": 10,
+          "percent": 55.6
+        },
+        {
+          "name": "小众目的地种草",
+          "count": 9,
+          "percent": 50.0
+        },
+        {
+          "name": "当地美食红黑榜",
+          "count": 8,
+          "percent": 44.4
+        },
+        {
+          "name": "交通接驳指南",
+          "count": 8,
+          "percent": 44.4
+        },
+        {
+          "name": "现成学生党行程模板",
+          "count": 6,
+          "percent": 33.3
+        }
+      ]
+    },
+    "住宿选择困难": {
+      "total": 17,
+      "top_functions": [
+        {
+          "name": "按预算推荐目的地和行程",
+          "count": 9,
+          "percent": 52.9
+        },
+        {
+          "name": "交通接驳指南",
+          "count": 8,
+          "percent": 47.1
+        },
+        {
+          "name": "现成学生党行程模板",
+          "count": 8,
+          "percent": 47.1
+        },
+        {
+          "name": "小众目的地种草",
+          "count": 7,
+          "percent": 41.2
+        },
+        {
+          "name": "住宿区域推荐",
+          "count": 3,
+          "percent": 17.6
+        }
+      ]
+    },
+    "攻略信息太分散，多APP切换": {
+      "total": 48,
+      "top_functions": [
+        {
+          "name": "按预算推荐目的地和行程",
+          "count": 27,
+          "percent": 56.2
+        },
+        {
+          "name": "现成学生党行程模板",
+          "count": 24,
+          "percent": 50.0
+        },
+        {
+          "name": "小众目的地种草",
+          "count": 17,
+          "percent": 35.4
+        },
+        {
+          "name": "当地美食红黑榜",
+          "count": 17,
+          "percent": 35.4
+        },
+        {
+          "name": "实时避坑提醒",
+          "count": 12,
+          "percent": 25.0
+        }
+      ]
+    },
+    "一人出行难拼车/找搭子": {
+      "total": 3,
+      "top_functions": [
+        {
+          "name": "小众目的地种草",
+          "count": 3,
+          "percent": 100.0
+        },
+        {
+          "name": "按预算推荐目的地和行程",
+          "count": 2,
+          "percent": 66.7
+        },
+        {
+          "name": "现成学生党行程模板",
+          "count": 2,
+          "percent": 66.7
+        },
+        {
+          "name": "行程共享与协同编辑",
+          "count": 1,
+          "percent": 33.3
+        },
+        {
+          "name": "旅行记账与AA分摊",
+          "count": 1,
+          "percent": 33.3
+        }
+      ]
+    }
+  },
+  "demand_priority": [
+    {
+      "function": "按预算推荐目的地和行程",
+      "selection_rate": 49.1,
+      "pain_relevance": 56.4,
+      "composite_score": 52.0,
+      "priority": "P0"
+    },
+    {
+      "function": "现成学生党行程模板",
+      "selection_rate": 46.3,
+      "pain_relevance": 51.2,
+      "composite_score": 48.3,
+      "priority": "P0"
+    },
+    {
+      "function": "小众目的地种草",
+      "selection_rate": 43.3,
+      "pain_relevance": 30.2,
+      "composite_score": 38.1,
+      "priority": "P0"
+    },
+    {
+      "function": "交通接驳指南",
+      "selection_rate": 32.9,
+      "pain_relevance": 19.5,
+      "composite_score": 27.5,
+      "priority": "P0"
+    },
+    {
+      "function": "当地美食红黑榜",
+      "selection_rate": 30.5,
+      "pain_relevance": 21.7,
+      "composite_score": 27.0,
+      "priority": "P0"
+    },
+    {
+      "function": "住宿区域推荐",
+      "selection_rate": 20.4,
+      "pain_relevance": 21.4,
+      "composite_score": 20.8,
+      "priority": "P1"
+    },
+    {
+      "function": "实时避坑提醒",
+      "selection_rate": 24.1,
+      "pain_relevance": 11.0,
+      "composite_score": 18.9,
+      "priority": "P1"
+    },
+    {
+      "function": "行程共享与协同编辑",
+      "selection_rate": 14.6,
+      "pain_relevance": 15.5,
+      "composite_score": 15.0,
+      "priority": "P2"
+    },
+    {
+      "function": "旅行记账与AA分摊",
+      "selection_rate": 11.0,
+      "pain_relevance": 18.0,
+      "composite_score": 13.8,
+      "priority": "P2"
+    },
+    {
+      "function": "出行搭子匹配",
+      "selection_rate": 18.0,
+      "pain_relevance": 0.9,
+      "composite_score": 11.2,
+      "priority": "P2"
+    }
+  ],
+  "open_ended_summary": {
+    "total_filled": 220,
+    "total_empty": 108,
+    "interview_willing": 51
+  }
+}
