@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>旅徒 - 大学生轻量化文旅出行工具 | 产品原型</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif;
+    background: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  .phone-frame {
+    width: 375px;
+    height: 760px;
+    background: #fff;
+    border-radius: 40px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    overflow: hidden;
+    position: relative;
+    border: 8px solid #1a1a1a;
+  }
+  .status-bar {
+    height: 44px;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+  }
+  .status-bar .right { display: flex; gap: 5px; align-items: center; }
+  .page-container {
+    height: calc(760px - 44px - 60px);
+    overflow-y: auto;
+    position: relative;
+  }
+  .page-container::-webkit-scrollbar { display: none; }
+  .page { display: none; padding-bottom: 20px; }
+  .page.active { display: block; }
+
+  /* 底部导航 */
+  .tab-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: #fff;
+    display: flex;
+    border-top: 1px solid #eee;
+    z-index: 100;
+  }
+  .tab-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .tab-item .icon { font-size: 22px; margin-bottom: 2px; }
+  .tab-item .label { font-size: 10px; color: #999; }
+  .tab-item.active .label { color: #0d9488; font-weight: 600; }
+  .tab-item.active .icon { transform: scale(1.1); }
+
+  /* 首页 */
+  .search-bar {
+    padding: 10px 16px;
+    background: #fff;
+  }
+  .search-box {
+    background: #f5f5f5;
+    border-radius: 20px;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #999;
+    font-size: 14px;
+  }
+  .banner {
+    margin: 12px 16px;
+    height: 140px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #0d9488 0%, #14b8a6 50%, #2dd4bf 100%);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    color: #fff;
+  }
+  .banner::after {
+    content: '';
+    position: absolute;
+    right: -30px;
+    top: -30px;
+    width: 150px;
+    height: 150px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+  }
+  .banner h2 { font-size: 22px; margin-bottom: 6px; }
+  .banner p { font-size: 13px; opacity: 0.9; }
+  .banner .tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 3px 10px;
+    border-radius: 10px;
+    font-size: 11px;
+    margin-top: 8px;
+  }
+
+  .quick-entry {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    padding: 0 16px;
+    margin-bottom: 20px;
+  }
+  .quick-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+  }
+  .quick-item .q-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 6px;
+  }
+  .quick-item .q-label { font-size: 12px; color: #333; }
+
+  .section-title {
+    padding: 0 16px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .section-title h3 { font-size: 17px; color: #1a1a1a; }
+  .section-title .more { font-size: 12px; color: #999; }
+
+  .dest-card {
+    margin: 0 16px 14px;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    cursor: pointer;
+  }
+  .dest-card .img {
+    height: 140px;
+    position: relative;
+  }
+  .dest-card .img .price-tag {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+  }
+  .dest-card .info { padding: 12px; }
+  .dest-card .info h4 { font-size: 15px; margin-bottom: 4px; color: #1a1a1a; }
+  .dest-card .info p { font-size: 12px; color: #888; margin-bottom: 8px; }
+  .dest-card .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .dest-card .tags span {
+    background: #f0fdfa;
+    color: #0d9488;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+  }
+
+  /* 行程模板页 */
+  .filter-bar {
+    display: flex;
+    gap: 8px;
+    padding: 12px 16px;
+    overflow-x: auto;
+    background: #fff;
+  }
+  .filter-bar::-webkit-scrollbar { display: none; }
+  .filter-tag {
+    padding: 6px 14px;
+    border-radius: 16px;
+    background: #f5f5f5;
+    font-size: 13px;
+    color: #666;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .filter-tag.active {
+    background: #0d9488;
+    color: #fff;
+  }
+
+  .template-card {
+    margin: 0 16px 14px;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .template-card .header {
+    padding: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .template-card .header h4 { font-size: 16px; color: #1a1a1a; margin-bottom: 4px; }
+  .template-card .header .meta { font-size: 12px; color: #888; }
+  .template-card .header .budget {
+    text-align: right;
+  }
+  .template-card .header .budget .num {
+    font-size: 20px;
+    color: #f97316;
+    font-weight: 700;
+  }
+  .template-card .header .budget .unit { font-size: 11px; color: #999; }
+  .template-card .schedule {
+    padding: 0 14px 14px;
+  }
+  .template-card .schedule-item {
+    display: flex;
+    gap: 10px;
+    padding: 6px 0;
+    font-size: 13px;
+    color: #555;
+  }
+  .template-card .schedule-item .time {
+    color: #0d9488;
+    font-weight: 600;
+    min-width: 50px;
+  }
+  .template-card .footer {
+    padding: 10px 14px;
+    background: #fafafa;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .template-card .footer .stats { font-size: 11px; color: #999; }
+  .template-card .footer .use-btn {
+    background: #0d9488;
+    color: #fff;
+    padding: 6px 16px;
+    border-radius: 14px;
+    font-size: 12px;
+  }
+
+  /* 种草页 */
+  .note-grid {
+    padding: 0 8px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .note-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    cursor: pointer;
+  }
+  .note-card .note-img {
+    height: 160px;
+    position: relative;
+  }
+  .note-card .note-img .location {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 10px;
+  }
+  .note-card .note-body { padding: 10px; }
+  .note-card .note-body h5 {
+    font-size: 13px;
+    color: #1a1a1a;
+    margin-bottom: 6px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .note-card .note-body .author {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .note-card .note-body .avatar {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ddd;
+  }
+  .note-card .note-body .name { font-size: 11px; color: #888; }
+
+  /* 美食页 */
+  .food-header {
+    padding: 16px;
+    background: linear-gradient(135deg, #f97316, #fb923c);
+    color: #fff;
+  }
+  .food-header h2 { font-size: 20px; margin-bottom: 4px; }
+  .food-header p { font-size: 13px; opacity: 0.9; }
+  .food-tabs {
+    display: flex;
+    padding: 12px 16px;
+    gap: 20px;
+    border-bottom: 1px solid #eee;
+  }
+  .food-tab {
+    font-size: 15px;
+    color: #999;
+    padding-bottom: 6px;
+    cursor: pointer;
+    position: relative;
+  }
+  .food-tab.active {
+    color: #f97316;
+    font-weight: 600;
+  }
+  .food-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 3px;
+    background: #f97316;
+    border-radius: 2px;
+  }
+  .food-card {
+    margin: 12px 16px;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    overflow: hidden;
+    display: flex;
+  }
+  .food-card .food-img {
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+  }
+  .food-card .food-info {
+    padding: 12px;
+    flex: 1;
+  }
+  .food-card .food-info h4 { font-size: 15px; margin-bottom: 4px; color: #1a1a1a; }
+  .food-card .food-info .desc { font-size: 12px; color: #888; margin-bottom: 6px; }
+  .food-card .food-info .bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .food-card .food-info .price { font-size: 14px; color: #f97316; font-weight: 600; }
+  .food-card .food-info .rating { font-size: 12px; color: #f59e0b; }
+  .food-card .badge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 3px 8px;
+    font-size: 10px;
+    color: #fff;
+    border-radius: 0 0 8px 0;
+  }
+  .food-card .badge.red { background: #ef4444; }
+  .food-card .badge.green { background: #22c55e; }
+
+  /* 我的页 */
+  .profile-header {
+    padding: 30px 20px;
+    background: linear-gradient(135deg, #0d9488, #14b8a6);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .profile-header .avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+  }
+  .profile-header .info h2 { font-size: 20px; margin-bottom: 4px; }
+  .profile-header .info p { font-size: 13px; opacity: 0.85; }
+  .stats-row {
+    display: flex;
+    background: #fff;
+    padding: 16px 0;
+    margin-bottom: 10px;
+  }
+  .stats-row .stat-item {
+    flex: 1;
+    text-align: center;
+    border-right: 1px solid #f0f0f0;
+  }
+  .stats-row .stat-item:last-child { border-right: none; }
+  .stats-row .stat-item .num { font-size: 20px; font-weight: 700; color: #1a1a1a; }
+  .stats-row .stat-item .label { font-size: 12px; color: #888; margin-top: 2px; }
+  .menu-list { background: #fff; }
+  .menu-item {
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    border-bottom: 1px solid #f5f5f5;
+    cursor: pointer;
+  }
+  .menu-item .m-icon { font-size: 20px; margin-right: 12px; }
+  .menu-item .m-label { flex: 1; font-size: 14px; color: #333; }
+  .menu-item .m-arrow { color: #ccc; font-size: 14px; }
+
+  /* 详情弹窗 */
+  .modal-overlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 200;
+    align-items: flex-end;
+  }
+  .modal-overlay.show { display: flex; }
+  .modal-content {
+    background: #fff;
+    width: 100%;
+    max-height: 85%;
+    border-radius: 20px 20px 0 0;
+    overflow-y: auto;
+    animation: slideUp 0.3s ease;
+  }
+  @keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+  .modal-header {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 10;
+  }
+  .modal-header h3 { font-size: 17px; }
+  .modal-header .close { font-size: 22px; color: #999; cursor: pointer; }
+  .modal-body { padding: 16px; }
+
+  .prototype-info {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 13px;
+    max-width: 220px;
+    line-height: 1.6;
+  }
+  .prototype-info h4 { margin-bottom: 6px; font-size: 14px; }
+  .prototype-info p { opacity: 0.85; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<div class="prototype-info">
+  <h4>旅徒 - 产品原型</h4>
+  <p>大学生轻量化文旅出行工具<br>点击底部导航切换页面<br>点击卡片查看详情</p>
+</div>
+
+<div class="phone-frame">
+  <div class="status-bar">
+    <span>9:41</span>
+    <span class="right">
+      <span>📶</span>
+      <span>🔋</span>
+    </span>
+  </div>
+
+  <div class="page-container">
+    <!-- 首页 -->
+    <div class="page active" id="page-home">
+      <div class="search-bar">
+        <div class="search-box">
+          <span>🔍</span>
+          <span>搜索目的地、行程模板</span>
+        </div>
+      </div>
+
+      <div class="banner">
+        <div>
+          <h2>学生党专属</h2>
+          <p>输入预算，一键生成行程</p>
+          <span class="tag">人均200-800元</span>
+        </div>
+      </div>
+
+      <div class="quick-entry">
+        <div class="quick-item" onclick="switchTab('template')">
+          <div class="q-icon" style="background:#fef3c7;">📋</div>
+          <span class="q-label">行程模板</span>
+        </div>
+        <div class="quick-item" onclick="switchTab('discover')">
+          <div class="q-icon" style="background:#dcfce7;">🌿</div>
+          <span class="q-label">小众种草</span>
+        </div>
+        <div class="quick-item" onclick="switchTab('food')">
+          <div class="q-icon" style="background:#ffedd5;">🍜</div>
+          <span class="q-label">美食红黑榜</span>
+        </div>
+        <div class="quick-item" onclick="showBudgetModal()">
+          <div class="q-icon" style="background:#dbeafe;">💰</div>
+          <span class="q-label">按预算找</span>
+        </div>
+      </div>
+
+      <div class="section-title">
+        <h3>🔥 热门目的地</h3>
+        <span class="more">查看更多 ›</span>
+      </div>
+
+      <div class="dest-card" onclick="showDestDetail('顺德')">
+        <div class="img" style="background:linear-gradient(135deg,#f97316,#fbbf24);">
+          <div class="price-tag">人均 ¥380/2天</div>
+        </div>
+        <div class="info">
+          <h4>顺德 · 美食之都2日逛吃</h4>
+          <p>高铁20分钟直达，15家老店不踩雷</p>
+          <div class="tags">
+            <span>美食探店</span>
+            <span>高铁直达</span>
+            <span>学生友好</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="dest-card" onclick="showDestDetail('肇庆')">
+        <div class="img" style="background:linear-gradient(135deg,#0d9488,#2dd4bf);">
+          <div class="price-tag">人均 ¥280/2天</div>
+        </div>
+        <div class="info">
+          <h4>肇庆 · 鼎湖山避暑2日游</h4>
+          <p>广东小九寨，学生票半价，人均不到300</p>
+          <div class="tags">
+            <span>自然风景</span>
+            <span>避暑胜地</span>
+            <span>超高性价比</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="dest-card" onclick="showDestDetail('开平')">
+        <div class="img" style="background:linear-gradient(135deg,#8b5cf6,#c084fc);">
+          <div class="price-tag">人均 ¥220/1天</div>
+        </div>
+        <div class="info">
+          <h4>开平碉楼 · 小众人文1日游</h4>
+          <p>世界遗产，人少景美，适合拍照</p>
+          <div class="tags">
+            <span>小众目的地</span>
+            <span>人文历史</span>
+            <span>拍照出片</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 行程模板页 -->
+    <div class="page" id="page-template">
+      <div class="search-bar">
+        <div class="search-box">
+          <span>🔍</span>
+          <span>搜索行程模板</span>
+        </div>
+      </div>
+
+      <div class="filter-bar">
+        <div class="filter-tag active">全部</div>
+        <div class="filter-tag">1天</div>
+        <div class="filter-tag">2天</div>
+        <div class="filter-tag">3天</div>
+        <div class="filter-tag">暴走型</div>
+        <div class="filter-tag">休闲型</div>
+        <div class="filter-tag">美食型</div>
+        <div class="filter-tag">拍照型</div>
+      </div>
+
+      <div class="template-card" onclick="showTemplateDetail()">
+        <div class="header">
+          <div>
+            <h4>顺德美食2日暴走版</h4>
+            <div class="meta">📍 佛山顺德 · 2天1夜 · 高铁直达</div>
+          </div>
+          <div class="budget">
+            <div class="num">¥380</div>
+            <div class="unit">人均总花费</div>
+          </div>
+        </div>
+        <div class="schedule">
+          <div class="schedule-item">
+            <span class="time">Day1</span>
+            <span>广州南→顺德站→清晖园→华盖路步行街→民信老铺→欢乐海岸PLUS</span>
+          </div>
+          <div class="schedule-item">
+            <span class="time">Day2</span>
+            <span>逢简水乡→均安蒸猪→顺德博物馆→返程</span>
+          </div>
+        </div>
+        <div class="footer">
+          <span class="stats">👁 2.3k人使用 · ⭐ 4.9分</span>
+          <span class="use-btn">使用模板</span>
+        </div>
+      </div>
+
+      <div class="template-card">
+        <div class="header">
+          <div>
+            <h4>肇庆鼎湖山2日休闲版</h4>
+            <div class="meta">📍 广东肇庆 · 2天1夜 · 避暑首选</div>
+          </div>
+          <div class="budget">
+            <div class="num">¥280</div>
+            <div class="unit">人均总花费</div>
+          </div>
+        </div>
+        <div class="schedule">
+          <div class="schedule-item">
+            <span class="time">Day1</span>
+            <span>广州站→肇庆站→鼎湖山→庆云寺→飞水潭→住宿</span>
+          </div>
+          <div class="schedule-item">
+            <span class="time">Day2</span>
+            <span>七星岩→岩前村→肇庆裹蒸→返程</span>
+          </div>
+        </div>
+        <div class="footer">
+          <span class="stats">👁 1.8k人使用 · ⭐ 4.8分</span>
+          <span class="use-btn">使用模板</span>
+        </div>
+      </div>
+
+      <div class="template-card">
+        <div class="header">
+          <div>
+            <h4>长沙3日逛吃拍照版</h4>
+            <div class="meta">📍 湖南长沙 · 3天2夜 · 网红城市</div>
+          </div>
+          <div class="budget">
+            <div class="num">¥780</div>
+            <div class="unit">人均总花费</div>
+          </div>
+        </div>
+        <div class="schedule">
+          <div class="schedule-item">
+            <span class="time">Day1</span>
+            <span>橘子洲→岳麓山→湖南大学→五一广场→太平老街</span>
+          </div>
+          <div class="schedule-item">
+            <span class="time">Day2</span>
+            <span>湖南省博→古开福寺→潮宗街→文和友→解放西</span>
+          </div>
+          <div class="schedule-item">
+            <span class="time">Day3</span>
+            <span>谢子龙影像馆→李自健美术馆→返程</span>
+          </div>
+        </div>
+        <div class="footer">
+          <span class="stats">👁 5.6k人使用 · ⭐ 4.9分</span>
+          <span class="use-btn">使用模板</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 种草页 -->
+    <div class="page" id="page-discover">
+      <div class="search-bar">
+        <div class="search-box">
+          <span>🔍</span>
+          <span>搜索小众目的地</span>
+        </div>
+      </div>
+
+      <div class="filter-bar">
+        <div class="filter-tag active">推荐</div>
+        <div class="filter-tag">古村古镇</div>
+        <div class="filter-tag">海岛海滩</div>
+        <div class="filter-tag">山野森林</div>
+        <div class="filter-tag">城市秘境</div>
+      </div>
+
+      <div class="note-grid">
+        <div class="note-card">
+          <div class="note-img" style="background:linear-gradient(135deg,#0d9488,#5eead4);">
+            <span class="location">📍 广东肇庆</span>
+          </div>
+          <div class="note-body">
+            <h5>被低估的广东小九寨！鼎湖山避暑攻略，学生票只要30元</h5>
+            <div class="author">
+              <div class="avatar" style="background:#0d9488;"></div>
+              <span class="name">旅行的小鹿</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="note-card">
+          <div class="note-img" style="background:linear-gradient(135deg,#f97316,#fdba74);">
+            <span class="location">📍 广东江门</span>
+          </div>
+          <div class="note-body">
+            <h5>江门不止有狂飙！这个百年古村人少景美，半天就能逛完</h5>
+            <div class="author">
+              <div class="avatar" style="background:#f97316;"></div>
+              <span class="name">阿杰的相机</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="note-card">
+          <div class="note-img" style="background:linear-gradient(135deg,#3b82f6,#93c5fd);">
+            <span class="location">📍 广东惠州</span>
+          </div>
+          <div class="note-body">
+            <h5>惠州双月湾旁的小众海湾！水清沙幼，人均200住海景房</h5>
+            <div class="author">
+              <div class="avatar" style="background:#3b82f6;"></div>
+              <span class="name">海边的猫</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="note-card">
+          <div class="note-img" style="background:linear-gradient(135deg,#8b5cf6,#c4b5fd);">
+            <span class="location">📍 广东清远</span>
+          </div>
+          <div class="note-body">
+            <h5>清远千年瑶寨最全攻略！日出云海太绝了，附交通接驳指南</h5>
+            <div class="author">
+              <div class="avatar" style="background:#8b5cf6;"></div>
+              <span class="name">山野旅人</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="note-card">
+          <div class="note-img" style="background:linear-gradient(135deg,#ec4899,#f9a8d4);">
+            <span class="location">📍 广东佛山</span>
+          </div>
+          <div class="note-body">
+            <h5>佛山这个岭南古村太好拍了！0门票，地铁直达，附机位推荐</h5>
+            <div class="author">
+              <div class="avatar" style="background:#ec4899;"></div>
+              <span class="name">拍照的小美</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="note-card">
+          <div class="note-img" style="background:linear-gradient(135deg,#14b8a6,#6ee7b7);">
+            <span class="location">📍 广东韶关</span>
+          </div>
+          <div class="note-body">
+            <h5>韶关丹霞山2日徒步路线！学生票半价，附详细花费明细</h5>
+            <div class="author">
+              <div class="avatar" style="background:#14b8a6;"></div>
+              <span class="name">徒步的阿强</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 美食页 -->
+    <div class="page" id="page-food">
+      <div class="food-header">
+        <h2>🍜 美食红黑榜</h2>
+        <p>学生真实评价，拒绝广告，不踩雷</p>
+      </div>
+
+      <div class="food-tabs">
+        <div class="food-tab active" onclick="switchFoodTab(this, 'red')">红榜 · 推荐</div>
+        <div class="food-tab" onclick="switchFoodTab(this, 'black')">黑榜 · 避坑</div>
+      </div>
+
+      <div id="food-red">
+        <div class="food-card" style="position:relative;">
+          <span class="badge green">红榜TOP1</span>
+          <div class="food-img" style="background:linear-gradient(135deg,#f97316,#fbbf24);"></div>
+          <div class="food-info">
+            <h4>民信老铺（华盖路店）</h4>
+            <div class="desc">顺德老字号 · 双皮奶必点 · 本地人常去</div>
+            <div class="bottom">
+              <span class="price">¥25/人</span>
+              <span class="rating">⭐ 4.9 (1.2k评价)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="food-card" style="position:relative;">
+          <span class="badge green">红榜TOP2</span>
+          <div class="food-img" style="background:linear-gradient(135deg,#ef4444,#fca5a5);"></div>
+          <div class="food-info">
+            <h4>均安蒸猪（老字号）</h4>
+            <div class="desc">顺德特色 · 肥而不腻 · 上过舌尖上的中国</div>
+            <div class="bottom">
+              <span class="price">¥45/人</span>
+              <span class="rating">⭐ 4.8 (856评价)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="food-card" style="position:relative;">
+          <span class="badge green">红榜TOP3</span>
+          <div class="food-img" style="background:linear-gradient(135deg,#22c55e,#86efac);"></div>
+          <div class="food-info">
+            <h4>细妹五香牛杂</h4>
+            <div class="desc">清晖园旁 · 排队王 · 萝卜牛杂一绝</div>
+            <div class="bottom">
+              <span class="price">¥20/人</span>
+              <span class="rating">⭐ 4.7 (2.1k评价)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="food-card" style="position:relative;">
+          <span class="badge green">红榜</span>
+          <div class="food-img" style="background:linear-gradient(135deg,#3b82f6,#93c5fd);"></div>
+          <div class="food-info">
+            <h4>红星煲仔饭</h4>
+            <div class="desc">容桂老店 · 锅巴超香 · 腊味煲仔饭必点</div>
+            <div class="bottom">
+              <span class="price">¥30/人</span>
+              <span class="rating">⭐ 4.8 (723评价)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="food-black" style="display:none;">
+        <div class="food-card" style="position:relative;">
+          <span class="badge red">黑榜TOP1</span>
+          <div class="food-img" style="background:linear-gradient(135deg,#6b7280,#9ca3af);"></div>
+          <div class="food-info">
+            <h4>某某网红糖水铺</h4>
+            <div class="desc">小红书推爆 · 实际又贵又难吃 · 全是营销</div>
+            <div class="bottom">
+              <span class="price">¥38/人</span>
+              <span class="rating">⭐ 2.1 (342评价)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="food-card" style="position:relative;">
+          <span class="badge red">黑榜TOP2</span>
+          <div class="food-img" style="background:linear-gradient(135deg,#6b7280,#9ca3af);"></div>
+          <div class="food-info">
+            <h4>景区门口某某鱼皮</h4>
+            <div class="desc">清晖园对面 · 鱼皮不新鲜 · 宰客严重</div>
+            <div class="bottom">
+              <span class="price">¥45/人</span>
+              <span class="rating">⭐ 2.3 (189评价)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="food-card" style="position:relative;">
+          <span class="badge red">黑榜TOP3</span>
+          <div class="food-img" style="background:linear-gradient(135deg,#6b7280,#9ca3af);"></div>
+          <div class="food-info">
+            <h4>某某双皮奶博物馆</h4>
+            <div class="desc">名字唬人 · 实际是购物店 · 双皮奶粉冲的</div>
+            <div class="bottom">
+              <span class="price">¥35/人</span>
+              <span class="rating">⭐ 1.9 (256评价)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 我的页 -->
+    <div class="page" id="page-profile">
+      <div class="profile-header">
+        <div class="avatar">🧑‍🎓</div>
+        <div class="info">
+          <h2>旅行的小鹿</h2>
+          <p>佛山大学 · 已出行12次 · 足迹5省</p>
+        </div>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-item">
+          <div class="num">12</div>
+          <div class="label">出行次数</div>
+        </div>
+        <div class="stat-item">
+          <div class="num">8</div>
+          <div class="label">收藏模板</div>
+        </div>
+        <div class="stat-item">
+          <div class="num">15</div>
+          <div class="label">发布笔记</div>
+        </div>
+        <div class="stat-item">
+          <div class="num">2.3k</div>
+          <div class="label">获赞</div>
+        </div>
+      </div>
+
+      <div class="menu-list">
+        <div class="menu-item">
+          <span class="m-icon">📋</span>
+          <span class="m-label">我的行程</span>
+          <span class="m-arrow">›</span>
+        </div>
+        <div class="menu-item">
+          <span class="m-icon">⭐</span>
+          <span class="m-label">我的收藏</span>
+          <span class="m-arrow">›</span>
+        </div>
+        <div class="menu-item">
+          <span class="m-icon">✍️</span>
+          <span class="m-label">发布笔记</span>
+          <span class="m-arrow">›</span>
+        </div>
+        <div class="menu-item">
+          <span class="m-icon">👥</span>
+          <span class="m-label">找搭子</span>
+          <span class="m-arrow">›</span>
+        </div>
+        <div class="menu-item">
+          <span class="m-icon">💰</span>
+          <span class="m-label">学生优惠</span>
+          <span class="m-arrow">›</span>
+        </div>
+        <div class="menu-item">
+          <span class="m-icon">⚙️</span>
+          <span class="m-label">设置</span>
+          <span class="m-arrow">›</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 底部导航 -->
+  <div class="tab-bar">
+    <div class="tab-item active" data-tab="home" onclick="switchTab('home')">
+      <span class="icon">🏠</span>
+      <span class="label">首页</span>
+    </div>
+    <div class="tab-item" data-tab="template" onclick="switchTab('template')">
+      <span class="icon">📋</span>
+      <span class="label">行程</span>
+    </div>
+    <div class="tab-item" data-tab="discover" onclick="switchTab('discover')">
+      <span class="icon">🌿</span>
+      <span class="label">种草</span>
+    </div>
+    <div class="tab-item" data-tab="food" onclick="switchTab('food')">
+      <span class="icon">🍜</span>
+      <span class="label">美食</span>
+    </div>
+    <div class="tab-item" data-tab="profile" onclick="switchTab('profile')">
+      <span class="icon">👤</span>
+      <span class="label">我的</span>
+    </div>
+  </div>
+
+  <!-- 预算弹窗 -->
+  <div class="modal-overlay" id="budgetModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>💰 按预算找行程</h3>
+        <span class="close" onclick="closeModal('budgetModal')">×</span>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:14px;color:#666;margin-bottom:16px;">输入你的预算，为你推荐合适的目的地和行程</p>
+        <div style="margin-bottom:16px;">
+          <label style="font-size:13px;color:#333;display:block;margin-bottom:8px;">人均总预算（元）</label>
+          <div style="display:flex;gap:8px;">
+            <div style="flex:1;padding:12px;background:#f5f5f5;border-radius:10px;text-align:center;font-size:14px;cursor:pointer;" onclick="selectBudget(this,200)">≤200</div>
+            <div style="flex:1;padding:12px;background:#f5f5f5;border-radius:10px;text-align:center;font-size:14px;cursor:pointer;" onclick="selectBudget(this,400)">200-400</div>
+            <div style="flex:1;padding:12px;background:#0d9488;color:#fff;border-radius:10px;text-align:center;font-size:14px;cursor:pointer;">400-600</div>
+            <div style="flex:1;padding:12px;background:#f5f5f5;border-radius:10px;text-align:center;font-size:14px;cursor:pointer;" onclick="selectBudget(this,800)">600-800</div>
+            <div style="flex:1;padding:12px;background:#f5f5f5;border-radius:10px;text-align:center;font-size:14px;cursor:pointer;" onclick="selectBudget(this,1000)">≥800</div>
+          </div>
+        </div>
+        <div style="margin-bottom:16px;">
+          <label style="font-size:13px;color:#333;display:block;margin-bottom:8px;">出行天数</label>
+          <div style="display:flex;gap:8px;">
+            <div style="flex:1;padding:10px;background:#0d9488;color:#fff;border-radius:10px;text-align:center;font-size:13px;">1天</div>
+            <div style="flex:1;padding:10px;background:#f5f5f5;border-radius:10px;text-align:center;font-size:13px;cursor:pointer;">2天</div>
+            <div style="flex:1;padding:10px;background:#f5f5f5;border-radius:10px;text-align:center;font-size:13px;cursor:pointer;">3天</div>
+          </div>
+        </div>
+        <div style="margin-bottom:20px;">
+          <label style="font-size:13px;color:#333;display:block;margin-bottom:8px;">出发地</label>
+          <div style="padding:12px;background:#f5f5f5;border-radius:10px;font-size:14px;color:#333;">📍 佛山</div>
+        </div>
+        <div style="background:#0d9488;color:#fff;padding:14px;border-radius:12px;text-align:center;font-size:15px;font-weight:600;cursor:pointer;">
+          为我推荐行程
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 行程详情弹窗 -->
+  <div class="modal-overlay" id="templateModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>顺德美食2日暴走版</h3>
+        <span class="close" onclick="closeModal('templateModal')">×</span>
+      </div>
+      <div class="modal-body">
+        <div style="display:flex;gap:12px;margin-bottom:16px;">
+          <div style="flex:1;text-align:center;padding:10px;background:#f0fdfa;border-radius:10px;">
+            <div style="font-size:18px;font-weight:700;color:#0d9488;">¥380</div>
+            <div style="font-size:11px;color:#888;">人均总花费</div>
+          </div>
+          <div style="flex:1;text-align:center;padding:10px;background:#fef3c7;border-radius:10px;">
+            <div style="font-size:18px;font-weight:700;color:#d97706;">2天1夜</div>
+            <div style="font-size:11px;color:#888;">行程时长</div>
+          </div>
+          <div style="flex:1;text-align:center;padding:10px;background:#dbeafe;border-radius:10px;">
+            <div style="font-size:18px;font-weight:700;color:#2563eb;">20min</div>
+            <div style="font-size:11px;color:#888;">高铁直达</div>
+          </div>
+        </div>
+
+        <h4 style="font-size:15px;margin-bottom:10px;color:#1a1a1a;">📊 花费明细</h4>
+        <div style="background:#f9fafb;border-radius:10px;padding:12px;margin-bottom:16px;font-size:13px;">
+          <div style="display:flex;justify-content:space-between;padding:4px 0;"><span>🚄 交通（高铁往返+市内）</span><span style="color:#666;">¥120</span></div>
+          <div style="display:flex;justify-content:space-between;padding:4px 0;"><span>🏨 住宿（青旅/经济型酒店）</span><span style="color:#666;">¥80</span></div>
+          <div style="display:flex;justify-content:space-between;padding:4px 0;"><span>🍜 餐饮（8顿）</span><span style="color:#666;">¥150</span></div>
+          <div style="display:flex;justify-content:space-between;padding:4px 0;"><span>🎫 门票（清晖园等）</span><span style="color:#666;">¥30</span></div>
+          <div style="display:flex;justify-content:space-between;padding:4px 0;border-top:1px solid #e5e7eb;margin-top:6px;padding-top:10px;font-weight:600;"><span>合计</span><span style="color:#f97316;">¥380</span></div>
+        </div>
+
+        <h4 style="font-size:15px;margin-bottom:10px;color:#1a1a1a;">🗓 详细行程</h4>
+        <div style="margin-bottom:16px;">
+          <div style="font-size:14px;font-weight:600;color:#0d9488;margin-bottom:8px;">Day 1 · 清晖园+欢乐海岸</div>
+          <div style="font-size:13px;color:#555;line-height:1.8;padding-left:12px;border-left:2px solid #0d9488;">
+            <div><strong>08:30</strong> 佛山站→顺德站（高铁20分钟，¥15）</div>
+            <div><strong>09:30</strong> 清晖园（学生票¥7，游览2小时）</div>
+            <div><strong>11:30</strong> 华盖路步行街+民信老铺（双皮奶¥12）</div>
+            <div><strong>13:00</strong> 细妹五香牛杂（¥20）</div>
+            <div><strong>15:00</strong> 欢乐海岸PLUS（免费，拍照打卡）</div>
+            <div><strong>18:00</strong> 猪肉婆私房菜（人均¥60）</div>
+            <div><strong>20:00</strong> 返回住宿（容桂青旅¥80/晚）</div>
+          </div>
+        </div>
+        <div style="margin-bottom:16px;">
+          <div style="font-size:14px;font-weight:600;color:#0d9488;margin-bottom:8px;">Day 2 · 逢简水乡+返程</div>
+          <div style="font-size:13px;color:#555;line-height:1.8;padding-left:12px;border-left:2px solid #0d9488;">
+            <div><strong>09:00</strong> 前往逢简水乡（公交381路，¥4）</div>
+            <div><strong>10:00</strong> 逢简水乡（免费，游船¥50/人可选）</div>
+            <div><strong>12:00</strong> 均安蒸猪（人均¥45）</div>
+            <div><strong>14:00</strong> 顺德博物馆（免费，需预约）</div>
+            <div><strong>16:00</strong> 顺德站→佛山站（返程，¥15）</div>
+          </div>
+        </div>
+
+        <h4 style="font-size:15px;margin-bottom:10px;color:#1a1a1a;">🚇 交通接驳指南</h4>
+        <div style="background:#fffbeb;border-radius:10px;padding:12px;margin-bottom:16px;font-size:13px;color:#555;line-height:1.7;">
+          <p>• <strong>顺德站→清晖园</strong>：公交314路，约25分钟，¥2；打车约15分钟，¥15</p>
+          <p>• <strong>清晖园→欢乐海岸</strong>：公交316路，约30分钟，¥2；打车约12分钟，¥12</p>
+          <p>• <strong>容桂→逢简水乡</strong>：公交381路，约40分钟，¥4</p>
+          <p style="color:#d97706;">⚠️ 避坑：顺德站出租车不打表，建议用网约车或公交</p>
+        </div>
+
+        <div style="display:flex;gap:10px;">
+          <div style="flex:1;background:#f5f5f5;color:#333;padding:14px;border-radius:12px;text-align:center;font-size:14px;cursor:pointer;">收藏模板</div>
+          <div style="flex:2;background:#0d9488;color:#fff;padding:14px;border-radius:12px;text-align:center;font-size:15px;font-weight:600;cursor:pointer;">使用此模板</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function switchTab(tab) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-' + tab).classList.add('active');
+  document.querySelector(`.tab-item[data-tab="${tab}"]`).classList.add('active');
+  document.querySelector('.page-container').scrollTop = 0;
+}
+
+function showBudgetModal() {
+  document.getElementById('budgetModal').classList.add('show');
+}
+
+function showTemplateDetail() {
+  document.getElementById('templateModal').classList.add('show');
+}
+
+function showDestDetail(name) {
+  showTemplateDetail();
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove('show');
+}
+
+function selectBudget(el, val) {
+  el.parentElement.querySelectorAll('div').forEach(d => {
+    d.style.background = '#f5f5f5';
+    d.style.color = '#333';
+  });
+  el.style.background = '#0d9488';
+  el.style.color = '#fff';
+}
+
+function switchFoodTab(el, type) {
+  document.querySelectorAll('.food-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('food-red').style.display = type === 'red' ? 'block' : 'none';
+  document.getElementById('food-black').style.display = type === 'black' ? 'block' : 'none';
+}
+
+// 点击遮罩关闭弹窗
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', function(e) {
+    if (e.target === this) {
+      this.classList.remove('show');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
