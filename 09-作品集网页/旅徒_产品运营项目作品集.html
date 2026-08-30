@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>旅徒 - 大学生轻量化文旅出行工具 | 产品运营项目作品集</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #fafafa;
+    color: #1a1a1a;
+    line-height: 1.7;
+  }
+  a { color: #0d9488; text-decoration: none; }
+
+  /* 导航栏 */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #eee;
+    z-index: 1000;
+    padding: 0 40px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .navbar .logo {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0d9488;
+  }
+  .navbar .nav-links {
+    display: flex;
+    gap: 28px;
+    font-size: 14px;
+  }
+  .navbar .nav-links a {
+    color: #555;
+    transition: color 0.2s;
+  }
+  .navbar .nav-links a:hover { color: #0d9488; }
+
+  /* 通用容器 */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* Hero区域 */
+  .hero {
+    padding: 140px 0 80px;
+    background: linear-gradient(135deg, #0d9488 0%, #14b8a6 50%, #2dd4bf 100%);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    right: -100px;
+    top: -100px;
+    width: 400px;
+    height: 400px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    left: -50px;
+    bottom: -150px;
+    width: 300px;
+    height: 300px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 50%;
+  }
+  .hero .tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: 48px;
+    font-weight: 800;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .hero .subtitle {
+    font-size: 20px;
+    opacity: 0.9;
+    margin-bottom: 40px;
+    max-width: 600px;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .hero-stat .num {
+    font-size: 36px;
+    font-weight: 800;
+  }
+  .hero-stat .label {
+    font-size: 14px;
+    opacity: 0.85;
+  }
+
+  /* 板块通用 */
+  .section {
+    padding: 80px 0;
+  }
+  .section:nth-child(even) {
+    background: #fff;
+  }
+  .section-header {
+    margin-bottom: 50px;
+  }
+  .section-header .section-tag {
+    display: inline-block;
+    background: #f0fdfa;
+    color: #0d9488;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .section-header h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .section-header p {
+    font-size: 16px;
+    color: #666;
+    max-width: 700px;
+  }
+
+  /* 背景板块 */
+  .bg-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+  .bg-card {
+    background: #f9fafb;
+    border-radius: 16px;
+    padding: 30px;
+    border-left: 4px solid #0d9488;
+  }
+  .bg-card h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: #0d9488;
+  }
+  .bg-card p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.8;
+  }
+  .bg-card ul {
+    padding-left: 20px;
+    font-size: 14px;
+    color: #555;
+  }
+  .bg-card li { margin-bottom: 8px; }
+
+  /* 方法流程 */
+  .process-flow {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .process-step {
+    flex: 1;
+    min-width: 180px;
+    text-align: center;
+    position: relative;
+  }
+  .process-step .step-num {
+    width: 50px;
+    height: 50px;
+    background: #0d9488;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 auto 16px;
+  }
+  .process-step h4 {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  .process-step p {
+    font-size: 13px;
+    color: #777;
+  }
+  .process-arrow {
+    position: absolute;
+    right: -20px;
+    top: 25px;
+    color: #ccc;
+    font-size: 24px;
+  }
+
+  /* 数据图表 */
+  .charts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+  .chart-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border: 1px solid #f0f0f0;
+  }
+  .chart-card h3 {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+  }
+  .bar-chart { display: flex; flex-direction: column; gap: 12px; }
+  .bar-item { display: flex; align-items: center; gap: 12px; }
+  .bar-label {
+    width: 100px;
+    font-size: 13px;
+    color: #555;
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .bar-track {
+    flex: 1;
+    height: 24px;
+    background: #f5f5f5;
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+  }
+  .bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #0d9488, #14b8a6);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 8px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    transition: width 1s ease;
+  }
+  .bar-fill.orange { background: linear-gradient(90deg, #f97316, #fb923c); }
+  .bar-fill.purple { background: linear-gradient(90deg, #8b5cf6, #a78bfa); }
+
+  /* 洞察卡片 */
+  .insights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .insight-card {
+    background: linear-gradient(135deg, #f0fdfa, #fff);
+    border-radius: 14px;
+    padding: 24px;
+    border: 1px solid #ccfbf1;
+  }
+  .insight-card .icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+  .insight-card h4 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #0d9488;
+  }
+  .insight-card p {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.7;
+  }
+
+  /* 用户画像 */
+  .persona-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .persona-card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  }
+  .persona-header {
+    padding: 24px;
+    color: #fff;
+    text-align: center;
+  }
+  .persona-header.p1 { background: linear-gradient(135deg, #0d9488, #14b8a6); }
+  .persona-header.p2 { background: linear-gradient(135deg, #f97316, #fb923c); }
+  .persona-header.p3 { background: linear-gradient(135deg, #8b5cf6, #a78bfa); }
+  .persona-avatar {
+    width: 64px;
+    height: 64px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 50%;
+    margin: 0 auto 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+  }
+  .persona-header h3 { font-size: 18px; margin-bottom: 4px; }
+  .persona-header .desc { font-size: 13px; opacity: 0.9; }
+  .persona-body { padding: 20px; }
+  .persona-body .info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #f5f5f5;
+    font-size: 13px;
+  }
+  .persona-body .info-row .key { color: #888; }
+  .persona-body .info-row .val { color: #333; font-weight: 500; }
+  .persona-needs {
+    margin-top: 16px;
+  }
+  .persona-needs h5 {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 8px;
+  }
+  .persona-needs ul {
+    list-style: none;
+    padding: 0;
+  }
+  .persona-needs li {
+    font-size: 13px;
+    color: #444;
+    padding: 4px 0;
+    padding-left: 18px;
+    position: relative;
+  }
+  .persona-needs li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #0d9488;
+    font-weight: 700;
+  }
+
+  /* 需求池表格 */
+  .demand-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  .demand-table th {
+    background: #0d9488;
+    color: #fff;
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .demand-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 13px;
+    color: #444;
+  }
+  .demand-table tr:last-child td { border-bottom: none; }
+  .demand-table tr:hover { background: #f9fafb; }
+  .priority-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .priority-badge.p0 { background: #fef2f2; color: #dc2626; }
+  .priority-badge.p1 { background: #fffbeb; color: #d97706; }
+  .priority-badge.p2 { background: #f0fdf4; color: #16a34a; }
+
+  /* 原型展示 */
+  .prototype-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .prototype-info h3 {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+  .prototype-info p {
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.8;
+  }
+  .prototype-features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+  }
+  .prototype-features li {
+    padding: 10px 0;
+    padding-left: 30px;
+    position: relative;
+    font-size: 14px;
+    color: #444;
+  }
+  .prototype-features li::before {
+    content: '✨';
+    position: absolute;
+    left: 0;
+  }
+  .prototype-btn {
+    display: inline-block;
+    background: #0d9488;
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+  .prototype-btn:hover {
+    background: #0f766e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(13,148,136,0.3);
+  }
+  .prototype-preview {
+    background: #f5f5f5;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+  }
+  .phone-mockup {
+    width: 280px;
+    height: 560px;
+    background: #fff;
+    border-radius: 30px;
+    border: 6px solid #1a1a1a;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+  }
+  .phone-screen {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0d9488, #14b8a6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    padding: 30px;
+  }
+  .phone-screen .app-icon {
+    width: 70px;
+    height: 70px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    margin-bottom: 16px;
+  }
+  .phone-screen h4 { font-size: 20px; margin-bottom: 8px; }
+  .phone-screen p { font-size: 13px; opacity: 0.9; text-align: center; }
+
+  /* 运营数据 */
+  .ops-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  .ops-stat {
+    background: #fff;
+    border-radius: 14px;
+    padding: 24px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    border-top: 3px solid #0d9488;
+  }
+  .ops-stat .num {
+    font-size: 32px;
+    font-weight: 800;
+    color: #0d9488;
+    margin-bottom: 4px;
+  }
+  .ops-stat .label {
+    font-size: 13px;
+    color: #777;
+  }
+  .ops-stat .sub {
+    font-size: 11px;
+    color: #999;
+    margin-top: 4px;
+  }
+
+  .channel-compare {
+    background: #fff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  }
+  .channel-compare h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  .channel-row {
+    display: grid;
+    grid-template-columns: 120px 1fr 80px 80px;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f5f5f5;
+    font-size: 13px;
+  }
+  .channel-row:last-child { border-bottom: none; }
+  .channel-row .name { font-weight: 600; color: #333; }
+  .channel-row .bar-wrap {
+    height: 20px;
+    background: #f5f5f5;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  .channel-row .bar-inner {
+    height: 100%;
+    background: linear-gradient(90deg, #0d9488, #14b8a6);
+    border-radius: 5px;
+  }
+  .channel-row .val { text-align: right; color: #555; }
+  .channel-row .val.good { color: #16a34a; font-weight: 600; }
+
+  /* 总结 */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+  .summary-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  .summary-card h3 {
+    font-size: 18px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .summary-card ul {
+    list-style: none;
+    padding: 0;
+  }
+  .summary-card li {
+    padding: 10px 0;
+    padding-left: 24px;
+    position: relative;
+    font-size: 14px;
+    color: #444;
+    line-height: 1.7;
+  }
+  .summary-card li::before {
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+  }
+  .summary-card.achieve li::before { content: '✅'; }
+  .summary-card.reflect li::before { content: '💡'; }
+
+  /* 页脚 */
+  .footer {
+    background: #1a1a1a;
+    color: #999;
+    padding: 40px 0;
+    text-align: center;
+    font-size: 14px;
+  }
+  .footer a { color: #2dd4bf; }
+
+  /* 响应式 */
+  @media (max-width: 768px) {
+    .navbar { padding: 0 20px; }
+    .navbar .nav-links { display: none; }
+    .container { padding: 0 20px; }
+    .hero h1 { font-size: 32px; }
+    .hero .subtitle { font-size: 16px; }
+    .hero-stats { gap: 20px; }
+    .hero-stat .num { font-size: 28px; }
+    .section { padding: 50px 0; }
+    .section-header h2 { font-size: 24px; }
+    .bg-grid, .charts-grid, .insights-grid, .persona-grid, .prototype-section, .summary-grid {
+      grid-template-columns: 1fr;
+    }
+    .ops-stats { grid-template-columns: repeat(2, 1fr); }
+    .process-flow { flex-direction: column; align-items: center; }
+    .process-arrow { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 导航栏 -->
+<nav class="navbar">
+  <div class="logo">🧳 旅徒 · 项目作品集</div>
+  <div class="nav-links">
+    <a href="#background">项目背景</a>
+    <a href="#research">用户调研</a>
+    <a href="#persona">用户画像</a>
+    <a href="#demands">需求池</a>
+    <a href="#prototype">产品原型</a>
+    <a href="#operation">运营测试</a>
+    <a href="#summary">项目总结</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <span class="tag">产品运营独立项目 · 2026.09 - 2026.10</span>
+    <h1>旅徒<br>大学生轻量化文旅出行工具</h1>
+    <p class="subtitle">从用户调研到产品落地，完整跑通"调研-分析-设计-运营-迭代"的产品运营全流程</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="num">328份</div>
+        <div class="label">有效调研问卷</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">12人</div>
+        <div class="label">深度用户访谈</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">14条</div>
+        <div class="label">结构化需求池</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">523人</div>
+        <div class="label">灰度测试种子用户</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 项目背景 -->
+<section class="section" id="background">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">01 / 项目背景</span>
+      <h2>为什么做这个项目</h2>
+      <p>大学生短途出行需求旺盛，但现有文旅产品对学生群体的适配严重不足</p>
+    </div>
+    <div class="bg-grid">
+      <div class="bg-card">
+        <h3>📈 市场机会</h3>
+        <ul>
+          <li>中国在校大学生超4000万，文旅消费市场规模超千亿</li>
+          <li>短途周边游（1-3天）成为大学生最主流的出行方式</li>
+          <li>现有OTA平台（携程、马蜂窝）面向全人群，缺少学生专属视角</li>
+          <li>小红书/抖音内容分散，攻略质量参差不齐，广告泛滥</li>
+        </ul>
+      </div>
+      <div class="bg-card">
+        <h3>🎯 项目目标</h3>
+        <ul>
+          <li>验证"大学生专属轻量化文旅工具"的产品价值</li>
+          <li>完成从用户调研到产品落地的完整闭环</li>
+          <li>输出可落地的产品原型和运营方案</li>
+          <li>通过灰度测试验证核心功能的用户接受度</li>
+        </ul>
+      </div>
+      <div class="bg-card">
+        <h3>🔍 核心问题</h3>
+        <ul>
+          <li>大学生短途出行的核心痛点到底是什么？</li>
+          <li>现有解决方案为什么无法满足学生需求？</li>
+          <li>一款学生专属的文旅工具应该具备哪些核心功能？</li>
+          <li>如何低成本获取种子用户并验证产品价值？</li>
+        </ul>
+      </div>
+      <div class="bg-card">
+        <h3>🛠 我的角色</h3>
+        <ul>
+          <li><strong>独立完成全流程</strong>：调研设计、数据分析、用户访谈、需求梳理、产品原型、运营方案</li>
+          <li><strong>使用工具</strong>：问卷星、飞书多维表格、墨刀、Excel、SQL、Canva</li>
+          <li><strong>项目周期</strong>：2026年9月 - 10月（6周）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 研究方法 -->
+<section class="section" id="method">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">02 / 研究方法</span>
+      <h2>如何开展研究</h2>
+      <p>定量问卷 + 定性访谈结合，确保结论既有数据支撑又有深度洞察</p>
+    </div>
+    <div class="process-flow">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <h4>问卷设计</h4>
+        <p>5大模块21题，覆盖行为、痛点、需求</p>
+        <span class="process-arrow">→</span>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <h4>数据收集</h4>
+        <p>校园社群+小红书投放，回收328份有效样本</p>
+        <span class="process-arrow">→</span>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <h4>数据分析</h4>
+        <p>描述统计+交叉分析+痛点需求匹配</p>
+        <span class="process-arrow">→</span>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <h4>深度访谈</h4>
+        <p>12位用户1对1访谈，挖掘深层动机</p>
+        <span class="process-arrow">→</span>
+      </div>
+      <div class="process-step">
+        <div class="step-num">5</div>
+        <h4>结论输出</h4>
+        <p>用户画像+需求池+产品原型+运营方案</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 用户调研发现 -->
+<section class="section" id="research">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">03 / 调研发现</span>
+      <h2>数据告诉我们什么</h2>
+      <p>328份有效问卷的核心发现，用数据说话</p>
+    </div>
+
+    <div class="charts-grid">
+      <div class="chart-card">
+        <h3>📊 大学生最严重的出行痛点</h3>
+        <div class="bar-chart">
+          <div class="bar-item">
+            <span class="bar-label">没有现成行程模板</span>
+            <div class="bar-track"><div class="bar-fill" style="width:85%">28.5%</div></div>
+          </div>
+          <div class="bar-item">
+            <span class="bar-label">缺少学生预算参考</span>
+            <div class="bar-track"><div class="bar-fill" style="width:78%">26.2%</div></div>
+          </div>
+          <div class="bar-item">
+            <span class="bar-label">攻略质量差广告多</span>
+            <div class="bar-track"><div class="bar-fill" style="width:65%">21.8%</div></div>
+          </div>
+          <div class="bar-item">
+            <span class="bar-label">交通接驳信息不清</span>
+            <div class="bar-track"><div class="bar-fill orange" style="width:45%">15.1%</div></div>
+          </div>
+          <div class="bar-item">
+            <span class="bar-label">小众目的地信息少</span>
+            <div class="bar-track"><div class="bar-fill orange" style="width:38%">12.8%</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <h3>⭐ 最希望产品具备的功能</h3>
+        <div class="bar-chart">
+          <div class="bar-item">
+            <span class="bar-label">按预算推荐行程</span>
+            <div class="bar-track"><div class="bar-fill" style="width:90%">32.0%</div></div>
+          </div>
+          <div class="bar-item">
+            <span class="bar-label">现成行程模板</span>
+            <div class="bar-track"><div class="bar-fill" style="width:84%">30.0%</div></div>
+          </div>
+          <div class="bar-item">
+            <span class="bar-label">小众目的地种草</span>
+            <div class="bar-track"><div class="bar-fill" style="width:70%">25.0%</div></div>
+          </div>
+          <div class="bar-item">
+            <span class="bar-label">交通接驳指南</span>
+            <div class="bar-track"><div class="bar-fill purple" style="width:56%">20.0%</div></div>
+          </div>
+          <div class="bar-item">
+            <span class="bar-label">美食红黑榜</span>
+            <div class="bar-track"><div class="bar-fill purple" style="width:50%">18.0%</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <h3>💰 单次出行预算分布</h3>
+        <div class="bar-chart">
+          <div class="bar-item">
+            <span class="bar-label">200元以下</span>
+            <div class="bar-track"><div class="bar-fill orange" style="width:18%">9.2%</div></div>
+          </div>
+          <div class="bar-item">
+            <span class="bar-label">201-400元</span>
+            <div class="bar-track"><div class="bar-fill" style="width:52%">26.5%</div></div>
+          </div>
+          <div class="bar-item">
+            <span class="bar-label">401-600元</span>
+            <div class="bar-track"><div class="bar-fill" style="width:68%">34.8%</div></div>
+          </div>
+          <div class="bar-item">
+            <span class="bar-label">601-800元</span>
+            <div class="bar-track"><div class="bar-fill" style="width:42%">21.3%</div></div>
+          </div>
+          <div class="bar-item">
+            <span class="bar-label">800元以上</span>
+            <div class="bar-track"><div class="bar-fill purple" style="width:16%">8.2%</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <h3>📱 倾向的产品形态</h3>
+        <div class="bar-chart">
+          <div class="bar-item">
+            <span class="bar-label">微信小程序</span>
+            <div class="bar-track"><div class="bar-fill" style="width:92%">49.1%</div></div>
+          </div>
+          <div class="bar-item">
+            <span class="bar-label">小红书/抖音账号</span>
+            <div class="bar-track"><div class="bar-fill orange" style="width:38%">20.3%</div></div>
+          </div>
+          <div class="bar-item">
+            <span class="bar-label">独立APP</span>
+            <div class="bar-track"><div class="bar-fill purple" style="width:28%">15.2%</div></div>
+          </div>
+          <div class="bar-item">
+            <span class="bar-label">都可以</span>
+            <div class="bar-track"><div class="bar-fill" style="width:22%">11.9%</div></div>
+          </div>
+          <div class="bar-item">
+            <span class="bar-label">网页版</span>
+            <div class="bar-track"><div class="bar-fill orange" style="width:7%">3.5%</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="insights-grid">
+      <div class="insight-card">
+        <div class="icon">💸</div>
+        <h4>预算是核心决策因素</h4>
+        <p>61%的学生单次出行预算在600元以下，"按预算推荐"是需求度最高的功能，花费透明度直接影响用户选择</p>
+      </div>
+      <div class="insight-card">
+        <div class="icon">⏱</div>
+        <h4>效率需求强烈</h4>
+        <p>55%的用户提前3天内才决定出行，"做攻略太费时间"是高频痛点，现成可直接用的行程模板是刚需</p>
+      </div>
+      <div class="insight-card">
+        <div class="icon">📱</div>
+        <h4>小程序是最佳载体</h4>
+        <p>49%的用户倾向微信小程序，"不用下载、随用随走"是核心理由，旅行工具的低频属性决定了APP不是最优解</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 用户画像 -->
+<section class="section" id="persona">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">04 / 用户画像</span>
+      <h2>我们的用户是谁</h2>
+      <p>基于出行频率、预算、出行动机三个维度，提炼出三类核心用户画像</p>
+    </div>
+    <div class="persona-grid">
+      <div class="persona-card">
+        <div class="persona-header p1">
+          <div class="persona-avatar">👩‍🎓</div>
+          <h3>经济型新手</h3>
+          <div class="desc">占比42% · 大一/大二为主</div>
+        </div>
+        <div class="persona-body">
+          <div class="info-row"><span class="key">月生活费</span><span class="val">1000-2000元</span></div>
+          <div class="info-row"><span class="key">半年出行</span><span class="val">0-2次</span></div>
+          <div class="info-row"><span class="key">单次预算</span><span class="val">200-400元</span></div>
+          <div class="info-row"><span class="key">出行同伴</span><span class="val">室友/同学</span></div>
+          <div class="persona-needs">
+            <h5>核心需求</h5>
+            <ul>
+              <li>按预算推荐，花费透明</li>
+              <li>傻瓜式攻略，新手友好</li>
+              <li>真实评价，拒绝网红滤镜</li>
+              <li>学生优惠信息聚合</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-header p2">
+          <div class="persona-avatar">🧑‍💼</div>
+          <h3>品质体验派</h3>
+          <div class="desc">占比35% · 大三/大四为主</div>
+        </div>
+        <div class="persona-body">
+          <div class="info-row"><span class="key">月生活费</span><span class="val">1500-2500元</span></div>
+          <div class="info-row"><span class="key">半年出行</span><span class="val">3-4次</span></div>
+          <div class="info-row"><span class="key">单次预算</span><span class="val">400-800元</span></div>
+          <div class="info-row"><span class="key">出行同伴</span><span class="val">同学/男/女朋友</span></div>
+          <div class="persona-needs">
+            <h5>核心需求</h5>
+            <ul>
+              <li>高质量行程模板，可微调</li>
+              <li>小众目的地深度攻略</li>
+              <li>真实美食红黑榜</li>
+              <li>详细交通接驳指南</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-header p3">
+          <div class="persona-avatar">🧗</div>
+          <h3>深度玩家</h3>
+          <div class="desc">占比23% · 研究生/高年级</div>
+        </div>
+        <div class="persona-body">
+          <div class="info-row"><span class="key">月生活费</span><span class="val">2500元以上</span></div>
+          <div class="info-row"><span class="key">半年出行</span><span class="val">5次以上</span></div>
+          <div class="info-row"><span class="key">单次预算</span><span class="val">800元以上</span></div>
+          <div class="info-row"><span class="key">出行同伴</span><span class="val">独自/朋友小团体</span></div>
+          <div class="persona-needs">
+            <h5>核心需求</h5>
+            <ul>
+              <li>深度目的地信息（季节/人流）</li>
+              <li>工具整合（地图+行程+预算）</li>
+              <li>智能推荐，自动行程生成</li>
+              <li>多人协同编辑</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 需求池 -->
+<section class="section" id="demands">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">05 / 需求池</span>
+      <h2>需求优先级排序</h2>
+      <p>基于"用户选择率×痛点关联度"的综合评分，将14条需求划分为P0/P1/P2三个优先级</p>
+    </div>
+    <div style="overflow-x: auto;">
+      <table class="demand-table">
+        <thead>
+          <tr>
+            <th>优先级</th>
+            <th>需求名称</th>
+            <th>需求描述</th>
+            <th>用户选择率</th>
+            <th>功能模块</th>
+            <th>MVP</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="priority-badge p0">P0</span></td>
+            <td><strong>按预算推荐行程</strong></td>
+            <td>输入预算自动推荐目的地和完整行程，含各项花费明细</td>
+            <td>32.0%</td>
+            <td>智能推荐</td>
+            <td>✅</td>
+          </tr>
+          <tr>
+            <td><span class="priority-badge p0">P0</span></td>
+            <td><strong>现成行程模板</strong></td>
+            <td>按目的地/天数/风格分类的模板，可直接使用或微调</td>
+            <td>30.0%</td>
+            <td>行程模板</td>
+            <td>✅</td>
+          </tr>
+          <tr>
+            <td><span class="priority-badge p0">P0</span></td>
+            <td><strong>小众目的地种草</strong></td>
+            <td>人少便宜的小众目的地深度攻略，含最新交通和开放状态</td>
+            <td>25.0%</td>
+            <td>内容种草</td>
+            <td>✅</td>
+          </tr>
+          <tr>
+            <td><span class="priority-badge p0">P0</span></td>
+            <td><strong>交通接驳指南</strong></td>
+            <td>高铁站/机场到景区的详细交通方案，含费用、耗时、避坑</td>
+            <td>20.0%</td>
+            <td>交通指南</td>
+            <td>✅</td>
+          </tr>
+          <tr>
+            <td><span class="priority-badge p0">P0</span></td>
+            <td><strong>美食红黑榜</strong></td>
+            <td>学生真实评价的美食榜单，区分网红店和本地人店，拒绝广告</td>
+            <td>18.0%</td>
+            <td>美食推荐</td>
+            <td>✅</td>
+          </tr>
+          <tr>
+            <td><span class="priority-badge p1">P1</span></td>
+            <td>住宿区域推荐</td>
+            <td>按预算/交通便利性推荐住宿区域，标注优缺点和平均价格</td>
+            <td>12.0%</td>
+            <td>住宿推荐</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td><span class="priority-badge p1">P1</span></td>
+            <td>实时避坑提醒</td>
+            <td>出行前/中推送人流、天气、交通延误、临时闭园等提醒</td>
+            <td>15.0%</td>
+            <td>实时提醒</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td><span class="priority-badge p1">P1</span></td>
+            <td>出行搭子匹配</td>
+            <td>基于同校验证/目的地/兴趣匹配搭子，支持拼房拼车</td>
+            <td>10.0%</td>
+            <td>社交匹配</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td><span class="priority-badge p1">P1</span></td>
+            <td>行程协同编辑</td>
+            <td>多人共同编辑行程，投票决策，费用分摊，任务分工</td>
+            <td>8.0%</td>
+            <td>协同编辑</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td><span class="priority-badge p2">P2</span></td>
+            <td>旅行记账与AA</td>
+            <td>实时记账，多人AA自动计算，出行结束生成花费报告</td>
+            <td>6.0%</td>
+            <td>记账工具</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td><span class="priority-badge p2">P2</span></td>
+            <td>学生优惠聚合</td>
+            <td>汇总景点/交通/餐饮的学生优惠，出行前自动提醒</td>
+            <td>—</td>
+            <td>优惠聚合</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td><span class="priority-badge p2">P2</span></td>
+            <td>拍照机位指南</td>
+            <td>标注最佳拍照机位、时间、推荐穿搭，适合拍照党</td>
+            <td>—</td>
+            <td>拍照指南</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 产品原型 -->
+<section class="section" id="prototype">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">06 / 产品原型</span>
+      <h2>产品长什么样</h2>
+      <p>基于P0需求设计的微信小程序原型，5个核心页面+2个弹窗，可点击交互演示</p>
+    </div>
+    <div class="prototype-section">
+      <div class="prototype-info">
+        <h3>旅徒小程序 · 核心功能</h3>
+        <p>聚焦5大P0功能，以"行程模板"为核心，串联预算推荐、小众种草、交通指南、美食榜单，打造学生出行的一站式工具。</p>
+        <ul class="prototype-features">
+          <li>首页：搜索+热门目的地+快捷入口</li>
+          <li>行程页：按风格/天数筛选的模板列表</li>
+          <li>种草页：小众目的地的内容信息流</li>
+          <li>美食页：学生真实评价的红黑榜</li>
+          <li>我的：个人中心+收藏+发布</li>
+        </ul>
+        <a href="../07-产品原型/产品原型_旅徒小程序.html" target="_blank" class="prototype-btn">
+          🖱 点击体验交互式原型
+        </a>
+      </div>
+      <div class="prototype-preview">
+        <div class="phone-mockup">
+          <div class="phone-screen">
+            <div class="app-icon">🧳</div>
+            <h4>旅徒</h4>
+            <p>大学生的旅行搭子<br>输入预算，一键生成行程</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 运营与测试 -->
+<section class="section" id="operation">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">07 / 运营与测试</span>
+      <h2>灰度测试结果</h2>
+      <p>3所高校、15天灰度测试，验证产品核心价值与获客渠道</p>
+    </div>
+
+    <div class="ops-stats">
+      <div class="ops-stat">
+        <div class="num">523</div>
+        <div class="label">种子用户</div>
+        <div class="sub">目标500，完成104.6%</div>
+      </div>
+      <div class="ops-stat">
+        <div class="num">7.2元</div>
+        <div class="label">人均获客成本</div>
+        <div class="sub">目标≤8元，优于预期</div>
+      </div>
+      <div class="ops-stat">
+        <div class="num">42.3%</div>
+        <div class="label">次日留存率</div>
+        <div class="sub">目标≥40%，达标</div>
+      </div>
+      <div class="ops-stat">
+        <div class="num">386次</div>
+        <div class="label">模板使用次数</div>
+        <div class="sub">目标300次，远超预期</div>
+      </div>
+    </div>
+
+    <div class="channel-compare">
+      <h3>📊 获客渠道效果对比</h3>
+      <div class="channel-row" style="font-weight:600;color:#888;font-size:12px;">
+        <span>渠道</span>
+        <span>用户占比</span>
+        <span style="text-align:right;">获客成本</span>
+        <span style="text-align:right;">7日留存</span>
+      </div>
+      <div class="channel-row">
+        <span class="name">校园KOC</span>
+        <div class="bar-wrap"><div class="bar-inner" style="width:90%"></div></div>
+        <span class="val">6.4元</span>
+        <span class="val good">24.2%</span>
+      </div>
+      <div class="channel-row">
+        <span class="name">校园社群</span>
+        <div class="bar-wrap"><div class="bar-inner" style="width:55%"></div></div>
+        <span class="val good">5.8元</span>
+        <span class="val">19.8%</span>
+      </div>
+      <div class="channel-row">
+        <span class="name">小红书内容</span>
+        <div class="bar-wrap"><div class="bar-inner" style="width:42%"></div></div>
+        <span class="val">8.2元</span>
+        <span class="val">15.3%</span>
+      </div>
+      <div class="channel-row">
+        <span class="name">线下地推</span>
+        <div class="bar-wrap"><div class="bar-inner" style="width:25%"></div></div>
+        <span class="val">12.9元</span>
+        <span class="val">12.1%</span>
+      </div>
+    </div>
+
+    <div class="insights-grid" style="margin-top:30px;">
+      <div class="insight-card">
+        <div class="icon">✅</div>
+        <h4>核心价值验证成功</h4>
+        <p>行程模板功能使用率72.3%，用户满意度4.2/5.0，证明"为学生提供现成行程模板"是真实需求</p>
+      </div>
+      <div class="insight-card">
+        <div class="icon">🎯</div>
+        <h4>KOC渠道效果最优</h4>
+        <p>KOC渠道用户留存率24.2%，显著高于其他渠道，信任背书+精准用户是关键，下一阶段重点投入</p>
+      </div>
+      <div class="insight-card">
+        <div class="icon">🔄</div>
+        <h4>留存有待提升</h4>
+        <p>7日留存18.5%略低于目标，旅行工具天然低频，需通过内容运营提升非出行期的用户活跃</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 项目总结 -->
+<section class="section" id="summary">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">08 / 项目总结</span>
+      <h2>成果与反思</h2>
+      <p>完整跑通产品运营全流程，验证了产品价值，也发现了不足</p>
+    </div>
+    <div class="summary-grid">
+      <div class="summary-card achieve">
+        <h3>🏆 项目成果</h3>
+        <ul>
+          <li><strong>完整的用户研究体系</strong>：328份问卷+12份访谈，输出3类用户画像和14条结构化需求</li>
+          <li><strong>可交互的产品原型</strong>：5个核心页面的小程序原型，覆盖全部P0功能，可直接演示</li>
+          <li><strong>验证过的运营方案</strong>：4渠道冷启动策略，灰度测试验证KOC渠道最优，获客成本7.2元</li>
+          <li><strong>数据驱动的迭代方向</strong>：基于128条用户反馈，输出3个迭代版本的优先级排期</li>
+        </ul>
+      </div>
+      <div class="summary-card reflect">
+        <h3>💡 反思与不足</h3>
+        <ul>
+          <li><strong>样本范围有限</strong>：调研主要覆盖广东高校，结论的普适性有待验证，下一阶段应扩展到更多省份</li>
+          <li><strong>原型功能不完整</strong>：受时间限制，P1/P2功能未做原型，多人协同、实时提醒等复杂交互需要更深入的设计</li>
+          <li><strong>测试周期较短</strong>：15天的测试只能验证短期留存，长期留存和付费转化需要更长周期的观察</li>
+          <li><strong>内容生产能力不足</strong>：UGC生态尚未建立，内容主要靠PGC，规模化后需要完善内容激励和审核机制</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 页脚 -->
+<footer class="footer">
+  <div class="container">
+    <p>旅徒 · 大学生轻量化文旅出行工具 | 产品运营独立项目作品集</p>
+    <p style="margin-top:8px;font-size:12px;">项目周期：2026.09 - 2026.10 | 独立完成：调研·分析·设计·运营·迭代</p>
+  </div>
+</footer>
+
+<script>
+  // 平滑滚动
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // 滚动时导航栏高亮
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.navbar .nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      if (window.scrollY >= sectionTop) {
+        current = section.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link => {
+      link.style.color = '';
+      if (link.getAttribute('href') === '#' + current) {
+        link.style.color = '#0d9488';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
