@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>旅徒 · 大学生短途出行产品</title>
+<meta name="description" content="150 份问卷、1,773 条选择记录、10 项需求池与一套可点击原型。">
+<style>
+  :root{--ink:#183c37;--muted:#5b6f6b;--line:#d7e0d8;--bg:#eef2ed;--accent:#1F4E79}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.65}
+  .wrap{max-width:760px;margin:0 auto;padding:48px 22px 64px}
+  .kicker{font-size:13px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+  h1{font-size:40px;margin:10px 0 6px;letter-spacing:.02em}
+  .lead{font-size:17px;color:#2f4a45;margin:0 0 26px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 28px;padding:0;list-style:none}
+  .stats li{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 12px}
+  .stats b{display:block;font-size:22px;line-height:1.2}
+  .stats span{font-size:12px;color:var(--muted)}
+  .btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:34px}
+  a.btn{display:inline-block;padding:13px 22px;border-radius:999px;text-decoration:none;font-weight:600;font-size:15px}
+  a.primary{background:var(--accent);color:#fff}
+  a.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+  h2{font-size:15px;letter-spacing:.08em;color:var(--muted);margin:0 0 10px;font-weight:600}
+  ol{padding-left:20px;margin:0 0 30px}
+  ol li{margin:6px 0}
+  .note{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+  @media (max-width:560px){h1{font-size:32px}.stats{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="kicker">产品运营作品集 · 2026</div>
+  <h1>旅徒</h1>
+  <p class="lead">面向大学生短途出行：用 150 份问卷和 1,773 条选择记录，把模糊的想法收敛成 10 项需求池和一套 5 屏可点击原型。</p>
+
+  <ul class="stats">
+    <li><b>150</b><span>份问卷</span></li>
+    <li><b>1,773</b><span>条选择记录</span></li>
+    <li><b>10</b><span>项需求池</span></li>
+    <li><b>5+3</b><span>界面与弹层</span></li>
+  </ul>
+
+  <div class="btns">
+    <a class="btn primary" href="prototype/旅徒_完整交互原型.html">▶ 打开可点击原型</a>
+    <a class="btn ghost" href="https://github.com/2019968/lvtu-travel-portfolio">查看仓库</a>
+  </div>
+
+  <h2>项目链路</h2>
+  <ol>
+    <li>调研：24 题问卷，回收 150 份，设置跳题与重复提交校验</li>
+    <li>清洗：多选答案展开为三张表，形成 1,773 条记录</li>
+    <li>分析：SQL 做功能选择率排序与困扰共现，输出 10 项需求池</li>
+    <li>设计：按 Q20 结果确定首批功能，完成可点击原型</li>
+    <li>规划：冷启动的渠道、预算、埋点与回滚规则（已设计，未执行）</li>
+  </ol>
+
+  <p class="note">便利抽样，广东样本占 50.0%；10 份问卷作答低于 90 秒未剔除。结论按此局限解读。</p>
+</main>
+</body>
+</html>
